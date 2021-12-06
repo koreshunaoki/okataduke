@@ -1,0 +1,2 @@
+class HomeItem < ApplicationRecord
+end
