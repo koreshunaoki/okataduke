@@ -1,24 +1,41 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# お片付けフリマアプリ
 
-Things you may want to cover:
+## サイト概要
+お片付け機能をプラスしたフリマサイトです。
+サイト内でその物の画像、名前、ジャンル、家のどこに置いてあるか、メモ等を登録できるお片付けページを作成します。
+家のどこに何が置いてあるかがそれをみれば一目でわかるようになります。
+そして、いらなくなったものはそのページから直接フリマサイトに出品できる機能にします。
 
-* Ruby version
+### サイトテーマ
+どこに置いてあるかをなくし、いらないものは売る
 
-* System dependencies
+### テーマを選んだ理由
+郵便局で仕事をしているとよくフリマサイトで出品したものを郵送しに来るお客様がいます。
+中には毎日郵送しに来る方がいて話を聞くと、「家を片付けていたらいらないものがたくさんでてきた」ということでした。
+そこで自分の家に何があるかを把握してもらい、いらないものは出品してお金にするという循環ができれば色々な方が
+利用してくれるのではないかと考えたからです
 
-* Configuration
+### ターゲットユーザ
+主に主婦、主夫
 
-* Database creation
+### 主な利用シーン
+日々このアプリに家のものを登録していってもらい、いらなくなったら出品してもらう
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1JkklOX8YUPKqlwNMBP8rcMD_5G7DTmA7QAx_zXPR7bE/edit#gid=0
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+
