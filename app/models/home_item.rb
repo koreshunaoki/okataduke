@@ -1,2 +1,0 @@
-class HomeItem < ApplicationRecord
-end

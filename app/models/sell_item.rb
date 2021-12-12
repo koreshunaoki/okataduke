@@ -1,2 +1,0 @@
-class SellItem < ApplicationRecord
-end

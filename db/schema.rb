@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_083558) do
+ActiveRecord::Schema.define(version: 2021_12_11_084830) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -82,6 +82,28 @@ ActiveRecord::Schema.define(version: 2021_12_04_083558) do
     t.string "image_id"
     t.string "place_to_put"
     t.string "memo_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_homes", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "customer_id"
+    t.string "name"
+    t.string "image_id"
+    t.text "introduction"
+    t.string "place_to_put"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_sells", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "customer_id"
+    t.string "name"
+    t.string "image_id"
+    t.text "introduction"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

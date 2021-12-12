@@ -1,2 +1,50 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+
+ <h4>注文情報</h4>
+ <table border="3" bordercolor="black">
+    <tr>
+      <th>注文日</th>
+      <th><%= @order.created_at %></th>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <th><%= @order.customer.postal_code %><br><%= @order.customer.address %><br><%= @order.name %></th>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <th><%= @order.payment_method_i18n %></th>
+    </tr>
+
+  </table>
+　<h4>請求情報</h4>
+  <table border="3" bordercolor="black">
+    <tr>
+      <th>商品合計</th>
+      <th><%= @order.total_payment %></th>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <th><%= shipping_cost = 800 %></th>
+    </tr>
+    <tr>
+      <th>ご請求額</th>
+      <th><%= @order.total_payment + shipping_cost %></th>
+    </tr>
+  </table>
+  <h4>注文内容</h4>
+  <table border="3" bordercolor="black">
+    <% @order.order_details.each do |order_detail| %>
+     <tr>
+      <th>商品</th>
+      <th>単価(税込)</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+      <tr>
+        <th><%= order_detail.item.name %></th>
+        <th><%= order_detail.item.taxin_price.floor %></th>
+        <th><%= order_detail.amount %></th>
+        <th><%= order_detail.item.taxin_price.floor * order_detail.amount %></th>
+      </tr>
+    <% end %>
+  </table>

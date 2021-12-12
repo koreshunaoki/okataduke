@@ -21,31 +21,31 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'マイページ', customer_path(@customer.), class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '商品一覧', buy_items_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'お片付けページ', home_items_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '出品する', new_sell_item_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'マイページ', customer_path(current_customer), class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '商品一覧', item_sells_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'お片付けページ', item_homes_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '出品する', new_item_sell_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </li>
             <% else %>
-            <li class="nav-item">
-              <%= link_to "ABOUT", homes_about_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to "ABOUT", homes_about_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+              </li>
             <% end %>
             </ul>
           </div>

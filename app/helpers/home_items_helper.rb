@@ -1,2 +1,0 @@
-module HomeItemsHelper
-end

@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :customers
 
-  resources :home_items
+  
+  devise_for :customers, :controllers => {
+    :registrations => 'customers/registrations',
+    :sessions => 'customers/sessions'
+  }
 
+  namespace :item do
+   resources :homes
+  end
+  
+  namespace :item do
+   resources :sells
+    get 'sells/complete'
+  end
+  
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   resources :buy_items, only: [:show, :index]
@@ -11,14 +23,11 @@ Rails.application.routes.draw do
   get 'orders/complete'
   post 'orders/comfirm'
 
-  resources :sell_items
-  get 'sell_items/complete'
-
   resources :customers, only: [:show, :edit, :update]
   get 'customers/unsubscribe'
   patch 'customers/withdraw'
-  
-  
+
+
 
   root to: 'homes#top'
   get 'homes/about'
