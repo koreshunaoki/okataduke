@@ -1,16 +1,17 @@
 class Item::SellsController < ApplicationController
   def index
-    @sells = Item::Sell.all
+    @sells = ItemSell.all
+
   end
 
   def new
-    @item_sell = Item::Sell.new
+    @sell = ItemSell.new
   end
 
   def create
-    @sell = Sell.new(sell_params)
+    @sell = ItemSell.new(sell_params)
     @sell.customer_id = current_customer.id
-    @sell.save
+    @sell.save!
     redirect_to item_sells_path
   end
 
@@ -32,8 +33,8 @@ class Item::SellsController < ApplicationController
   end
 
   private
-  def blog_params
-    params.require(:blog).permit(:name, :image_id, :introduction, :price)
+  def sell_params
+    params.require(:item_sell).permit(:name, :image, :introduction, :price)
   end
 
 end

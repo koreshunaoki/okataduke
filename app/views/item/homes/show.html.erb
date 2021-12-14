@@ -1,2 +1,19 @@
-<h1>Item::Homes#show</h1>
-<p>Find me in app/views/item/homes/show.html.erb</p>
+<h2>家庭用品詳細画面</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+
+    <div class="col-md-5">
+      <%= attachment_image_tag @home, :image %>
+    </div>
+    <div class="col-md-7">
+      <h2><%= @home.name %></h2><br>
+      <h2><%= @home.introduction %></h2><br>
+      <h2><%= @home.place_to_put %></h2>
+    </div>
+    <%= form_with model: @sell, url: new_item_sell_path, local:true do |f| %>
+      <%= f.hidden_field :home_id, value: @home.id %>
+      <%= f.submit "フリマサイトに出品する", class: "btn btn-success btn-lg center-block" %>
+    <% end %>
+  </div>
+   <%= link_to '編集する', edit_item_home_path(@home), class:"btn btn-success btn-lg center-block" %>
+</div>

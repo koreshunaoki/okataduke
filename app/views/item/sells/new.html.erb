@@ -1,21 +1,28 @@
 <div class="container takasa">
   <h2>出品商品登録画面</h2>
 
-  <%= form_with model: @sell,  do |f| %>
+  <%= form_with model: @sell, method: :post, local: :true do |f| %>
+
+
+    <!--div class="row">
+      <div class="col-md-3"><%= f.label "商品価格" %></div>
+      <div class="col-md-9"><%= f.attachment_field :image %></div>
+    </div-->
+
     <div class="field">
-      <%= f.label :image_id, "画像" %>　　　　　　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.label "商品価格" %>　　　　　　　　　　　　<%= f.attachment_field :image %>
     </div><br>
 
     <div class="field">
-      <%= f.label :name, "名前　　　　　　　　　　　（姓）　" %><%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.label :name, "商品名　　　　　　　　　　　　　" %><%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div><br>
 
     <div class="field">
-      <%= f.label :introduction, "説明文" %>　　　　　<%= f.text_field :introduction, autofocus: true, autocomplete: "introduction" %>
+      <%= f.label :introduction, "商品説明文" %>　　　　　　　　　　　<%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %>
     </div><br>
 
     <div class="field">
-      <%= f.label :price,"価格" %>　　　　　<%= f.text_field :price, autofocus: true, autocomplete: "price" %>
+      <%= f.label :price,"商品価格" %>　　　　　　　　　　　　<%= f.text_field :price, autofocus: true, autocomplete: "price" %>
     </div><br>
 
     <div class="actions">
