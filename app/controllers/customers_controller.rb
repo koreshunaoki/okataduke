@@ -18,7 +18,6 @@ class CustomersController < ApplicationController
 
   def unsubscribe
     @customer = current_customer
-
   end
 
   def withdraw

@@ -24,5 +24,6 @@
     <div>
       <%= f.label :email, "メールアドレス" %>　　　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div><br>
-    <%= f.submit "編集内容を保存", class: "btn btn-success btn-lg center-block" %>　　　　　　　　　　　　　　　　　　　<%= link_to '退会する', customers_unsubscribe_path, class:"btn btn-success btn-lg center-block" %>
-  <% end %>
+    <%= f.submit "編集内容を保存", class: "btn btn-success btn-lg center-block" %>　　　　　　　　　　　　　　　　　
+  <% end %>　　
+  <%= link_to '退会する', customers_unsubscribe_path, class:"btn btn-success btn-lg center-block" %>

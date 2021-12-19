@@ -1,2 +1,16 @@
-<h1>Item::Sells#show</h1>
-<p>Find me in app/views/item/sells/show.html.erb</p>
+<h2>出品商品詳細画面</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-5">
+      <%= attachment_image_tag @sell, :image, :fill, 400, 400 %>
+    </div>
+    <div class="col-md-7">
+      <h2><%= @sell.name %></h2><br>
+      <h2><%= @sell.introduction %></h2><br>
+      <h2><%= @sell.price %></h2>
+      <span><i class="fa fa-calendar"></i> <%= @sell.created_at.strftime('%Y/%m/%d') %></span>
+    </div>
+  </div>
+    <%= link_to '編集する',  edit_item_sell_path(@sell), class:"btn btn-success btn-lg center-block" %>
+    <%= link_to "削除する", item_sell_path(@sell), method: :delete, data:{confirm: "削除しますか？"}, class:"btn btn-sm btn-danger destroy_book_id" %>
+</div>

@@ -1,34 +1,22 @@
-<div class="container takasa">
-  <h2>出品商品登録画面</h2>
-
-  <%= form_with model: @sell, method: :post, local: :true do |f| %>
-
-
-    <!--div class="row">
-      <div class="col-md-3"><%= f.label "商品価格" %></div>
-      <div class="col-md-9"><%= f.attachment_field :image %></div>
-    </div-->
-
-    <div class="field">
-      <%= f.label "商品価格" %>　　　　　　　　　　　　<%= f.attachment_field :image %>
-    </div><br>
-
-    <div class="field">
-      <%= f.label :name, "商品名　　　　　　　　　　　　　" %><%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-    </div><br>
-
-    <div class="field">
-      <%= f.label :introduction, "商品説明文" %>　　　　　　　　　　　<%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %>
-    </div><br>
-
-    <div class="field">
-      <%= f.label :price,"商品価格" %>　　　　　　　　　　　　<%= f.text_field :price, autofocus: true, autocomplete: "price" %>
-    </div><br>
-
+<h2>出品物登録画面</h2>
+<div class="container px-5 px-sm-0 card-list-container py-5">
+  <%= form_with model: @sell, local: :true do |f| %>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.label "商品画像", class:"form-group" %><br>
+        <%= f.label "商品名", class:"form-group" %><br>
+        <%= f.label "商品説明文", class:"form-group" %><br>
+        <%= f.label "商品価格", class:"form-group" %>
+      </div>
+      <div class="col-md-9">
+        <%= f.attachment_field :image %><br>
+        <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
+        <%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
+        <%= f.text_field :price, class:"form-group", autofocus: true, autocomplete: "price" %><br>
+      </div>
+    </div>
     <div class="actions">
-      <%= f.submit "出品する", class: "btn btn-success btn-lg center-block" %>
+      <%= f.submit "登録する", class: "btn btn-success btn-lg center-block" %>
     </div>
   <% end %>
-
-
 </div>

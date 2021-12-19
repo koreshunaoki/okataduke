@@ -1,2 +1,22 @@
-<h1>Item::Sells#edit</h1>
-<p>Find me in app/views/item/sells/edit.html.erb</p>
+<h2>家庭用編集画面</h2>
+<div class="container px-5 px-sm-0 card-list-container py-5">
+  <%= form_with model: @sell, url: item_sell_path(@sell), local: :true do |f| %>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.label "商品画像", class:"form-group" %><br>
+        <%= f.label "商品名", class:"form-group" %><br>
+        <%= f.label "商品説明文", class:"form-group" %><br>
+        <%= f.label "商品価格", class:"form-group" %>
+      </div>
+      <div class="col-md-9">
+        <%= f.attachment_field :image %><br>
+        <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
+        <%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
+        <%= f.text_field :price, class:"form-group", autofocus: true, autocomplete: "price" %><br>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit "編集する", class: "btn btn-success btn-lg center-block" %>
+    </div>
+  <% end %>
+</div>

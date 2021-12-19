@@ -1,6 +1,6 @@
 <h2>家庭用品登録画面</h2>
 <div class="container px-5 px-sm-0 card-list-container py-5">
-  <%= form_with model: @home, method: :post, local: :true do |f| %>
+  <%= form_with model: @home, local: :true do |f| %>
     <div class="row">
       <div class="col-md-3">
         <%= f.label "家庭用品画像", class:"form-group" %><br>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="actions">
-      <%= f.submit "出品する", class: "btn btn-success btn-lg center-block" %>
+      <%= f.submit "登録する", class: "btn btn-success btn-lg center-block" %>
     </div>
   <% end %>
 </div>

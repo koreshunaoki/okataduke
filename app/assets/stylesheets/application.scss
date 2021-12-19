@@ -17,3 +17,17 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.flex-container{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+	margin: 20px auto;
+}
+
+.card{
+  width:200px;
+}

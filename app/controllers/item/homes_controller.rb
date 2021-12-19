@@ -20,13 +20,24 @@ class Item::HomesController < ApplicationController
   end
 
   def edit
+    @home = ItemHome.find(params[:id])
   end
+
 
 
   def update
+    @home = ItemHome.find(params[:id])
+    if @home.update(home_params)
+      redirect_to item_home_path(@home)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @home = ItemHome.find(params[:id])
+    @home.destroy
+    redirect_to item_homes_path
   end
 
   private
