@@ -13,6 +13,7 @@
         <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
         <%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
         <%= f.text_field :price, class:"form-group", autofocus: true, autocomplete: "price" %><br>
+        <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
       </div>
     </div>
     <div class="actions">

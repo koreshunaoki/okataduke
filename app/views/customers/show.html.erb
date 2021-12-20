@@ -1,11 +1,9 @@
-<h1>マイページ</h1>
-
-
-<div class="col-5 ml-3">
+<div style="text-align: center">
+  <h1>マイページ</h1>
   <h3>登録情報</h3>
-  <%= link_to '編集する', edit_customer_path(@customer), class:"btn btn-success btn-lg center-block" %>
-  <h1 class="my-3 ml-3"></h1>
-  <table border="3" bordercolor="black" class="table table-sm" >
+  <%= link_to '登録情報を編集する', edit_customer_path(@customer), class:"btn btn-success btn-lg center-block" %>
+  <h1 class="my-5 ml-3"></h1>
+  <table align="center" style="font-size: 30px;">
     <tr>
       <td>氏名</td>
       <td><%= @customer.last_name %><%= @customer.first_name %></td>
@@ -32,7 +30,10 @@
     </tr>
   </table>
   <table>
-    <tr>配送先</tr>　　　<tr><%= link_to '一覧を見る', addresses_path, class:"btn btn-success btn-lg center-block" %></tr><br>
-    <tr>注文履歴</tr>　　<tr><%= link_to '一覧を見る', orders_path, class:"btn btn-success btn-lg center-block" %></tr>
+    <tr><%= link_to '配送先一覧を見る', addresses_path, class:"btn btn-success btn-lg center-block" %></tr><br>
+    <tr></tr><br>
+    <tr><%= link_to '注文履歴一覧を見る', orders_path, class:"btn btn-success btn-lg center-block" %></tr><br>
+    <tr></tr><br>
+    <tr><%= link_to '出品した商品を確認する', item_sells_path, class:"btn btn-success btn-lg center-block" %></tr>
   </table>
 </div>

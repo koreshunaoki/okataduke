@@ -3,5 +3,6 @@ class ItemSell < ApplicationRecord
   validates :introduction, presence: true
 
   belongs_to :customer
+  belongs_to :category
   attachment :image
 end

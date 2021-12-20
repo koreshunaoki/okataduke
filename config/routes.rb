@@ -6,22 +6,23 @@ Rails.application.routes.draw do
     :sessions => 'customers/sessions'
   }
 
+
+  namespace :item do
+   get 'sells/:id/complete',to: 'sells#complete',as: 'sells_complete'
+   resources :sells
+  end
+
   namespace :item do
    resources :homes
   end
-
-  namespace :item do
-   resources :sells
-    get 'sells/complete'
-  end
-
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   resources :buy_items, only: [:show, :index]
 
-  resources :orders, only: [:new, :index, :show, :create]
   get 'orders/complete'
   post 'orders/comfirm'
+  resources :orders, only: [:new, :index, :show, :create]
+
 
   get 'customers/unsubscribe'
   patch 'customers/withdraw'

@@ -1,7 +1,7 @@
-<div style="text-align: center">
+<div style="text-align: center" class="my-5 ml-10">
   <h1>出品完了しました！！</h1>
 </div>
 <div style="text-align: center">
-  <%#= link_to '出品した商品を確認する', item_sell_path(@sell), class:"btn btn-success btn-lg center-block" %>
+  <%= link_to '出品した商品を確認する', item_sell_path(@sell), class:"btn btn-success btn-lg center-block" %>
   <%= link_to '続けて出品する', new_item_sell_path, class:"btn btn-success btn-lg center-block" %>
 </div>
