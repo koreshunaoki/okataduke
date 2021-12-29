@@ -9,7 +9,7 @@
       <h2><%= @home.introduction %></h2><br>
       <h2><%= @home.place_to_put %></h2>
     </div>
-    <%= form_with model: @sell, url: new_item_sell_path, local:true do |f| %>
+    <%= form_with model: @item, url: new_item_sell_path, local:true, method: :get do |f| %>
       <%= f.hidden_field :home_id, value: @home.id %>
       <%= f.submit "フリマサイトに出品する", class: "btn btn-success btn-lg center-block" %>
     <% end %>

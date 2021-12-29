@@ -28,23 +28,23 @@
     </tr>
     <tr>
       <th>ご請求額</th>
-      <th><%= @order.total_payment + shipping_cost %></th>
+      <th><%= @order.total_payment %></th>
     </tr>
   </table>
   <h4>注文内容</h4>
   <table border="3" bordercolor="black">
-    <% @order.order_details.each do |order_detail| %>
+    <%# @order.order_details.each do |order_detail| %>
      <tr>
       <th>商品</th>
       <th>単価(税込)</th>
       <th>個数</th>
       <th>小計</th>
     </tr>
-      <tr>
-        <th><%= order_detail.item.name %></th>
-        <th><%= order_detail.item.taxin_price.floor %></th>
-        <th><%= order_detail.amount %></th>
-        <th><%= order_detail.item.taxin_price.floor * order_detail.amount %></th>
-      </tr>
-    <% end %>
+      <!--<tr>-->
+      <!--  <th><%#= order_detail.item.name %></th>-->
+      <!--  <th><%#= order_detail.item.taxin_price.floor %></th>-->
+      <!--  <th><%#= order_detail.amount %></th>-->
+      <!--  <th><%#= order_detail.item.taxin_price.floor * order_detail.amount %></th>-->
+      <!--</tr>-->
+    <%# end %>
   </table>

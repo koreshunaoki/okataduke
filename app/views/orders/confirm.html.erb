@@ -5,30 +5,16 @@
       <tr>
         <th>商品名</th>
         <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
       </tr>
-      <% @sum = 0 %>
-      <tr><% @cart_items.each do |cart_item| %></tr>
-        <th><%= attachment_image_tag cart_item.item, :image, :fill, 100, 100, format:'jpg', fallback:"no_image.jpg" %><%= cart_item.item.name %></th>
-        <th><%= cart_item.item.taxin_price.floor %></th>
-        <th><%= cart_item.amount %></th>
-        <th><%= cart_item.item.taxin_price.floor * cart_item.amount %></th>
-        <th><% @sum += cart_item.item.taxin_price.floor * cart_item.amount %></th>
-      <tr><% end %></tr>
+      <tr>
+        <th><%= attachment_image_tag @item, :image, :fill, 100, 100, format:'jpg', fallback:"no_image.jpg" %><%= @item.name %></th>
+        <th><%= @item.price %></th>
+      </tr>
     </table>
     <table border="3", bordercolor="black">
       <tr>
         <th>送料</th>
         <th><%= shipping_cost = 800 %></th>
-      </tr>
-      <tr>
-        <th>商品合計</th>
-        <td><%= @sum %></td>
-      </tr>
-      <tr>
-        <th>請求金額</th>
-        <th><%= @sum + shipping_cost %></th>
       </tr>
     </table>
 
@@ -38,11 +24,12 @@
     <h4>お届け先</h4>
     <%= @order.postal_code %><%= @order.address %><br>
     <%= @order.name %><br>
-  <%= form_with model: @order, url: public_orders_path, local:true do |f| %>
+  <%= form_with model: @order, url: orders_path, local:true do |f| %>
     <%= f.hidden_field :postal_code %>
     <%= f.hidden_field :address %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :payment_method %>
-    <%= f.hidden_field :total_payment, value: @sum %>
+    <%= f.hidden_field :total_payment %>
+    <%= f.hidden_field :sell_id, :value => @item.id %>
     <%= f.submit "注文を確定する", class: "btn btn-success btn-lg center-block" %>
   <% end %>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :customers, :controllers => {
     :registrations => 'customers/registrations',
     :sessions => 'customers/sessions'
@@ -8,21 +7,26 @@ Rails.application.routes.draw do
 
 
   namespace :item do
-   get 'sells/:id/complete',to: 'sells#complete',as: 'sells_complete'
+   resources :buys
+  end
+
+  namespace :item do
+   #get 'sells/:id/complete',to: 'sells#complete',as: 'sells_complete'
+   get "sells/complete"
    resources :sells
   end
+
 
   namespace :item do
    resources :homes
   end
+
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-  resources :buy_items, only: [:show, :index]
 
   get 'orders/complete'
-  post 'orders/comfirm'
+  post 'orders/confirm'
   resources :orders, only: [:new, :index, :show, :create]
-
 
   get 'customers/unsubscribe'
   patch 'customers/withdraw'

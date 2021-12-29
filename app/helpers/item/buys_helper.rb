@@ -1,0 +1,2 @@
+module Item::BuysHelper
+end

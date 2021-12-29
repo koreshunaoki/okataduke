@@ -10,13 +10,13 @@ class Item::HomesController < ApplicationController
   def create
     @home = ItemHome.new(home_params)
     @home.customer_id = current_customer.id
-    @home.save
+    @home.save!
     redirect_to item_homes_path
   end
 
   def show
     @home = ItemHome.find(params[:id])
-    @sell = ItemSell.new
+    @item = Item.new
   end
 
   def edit
@@ -42,6 +42,6 @@ class Item::HomesController < ApplicationController
 
   private
   def home_params
-    params.require(:item_home).permit(:name, :image, :introduction, :place_to_put)
+    params.require(:item_home).permit(:name, :image, :introduction, :place_to_put, :category_id)
   end
 end

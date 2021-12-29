@@ -7,30 +7,22 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = current_customer.addresses
+    @item_id = params[:sell_id]
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    # current_customer.cart_items.each do |cart_item|
-    # @order_detail = @order.order_details.new(
-    #     item_id: cart_item.item_id,
-    #     price: cart_item.item.price,
-    #     amount: cart_item.amount)
-    # @order_detail.save
-    # end
-    # current_customer.cart_items.destroy_all
-    redirect_to public_orders_thanks_path
+    @order.item_id = params[:order][:sell_id]
+    @order.save!
+    @order.item.update_attribute(:order_status, :purchased)
+    redirect_to orders_complete_path
   end
 
-  def thanks
-
-  end
 
   def confirm
     @order = Order.new(order_params)
-    #@cart_items = current_customer.cart_items
+    @item = Item.find(params[:sell_id])
     if params[:order][:address_option] == "current_customer_address"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address

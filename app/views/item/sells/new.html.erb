@@ -1,12 +1,13 @@
 <h2>出品物登録画面</h2>
 <div class="container px-5 px-sm-0 card-list-container py-5">
-  <%= form_with model: @sell, local: :true do |f| %>
+  <%= form_with model: @item, url: item_buys_path, local: :true do |f| %>
     <div class="row">
       <div class="col-md-3">
         <%= f.label "商品画像", class:"form-group" %><br>
         <%= f.label "商品名", class:"form-group" %><br>
         <%= f.label "商品説明文", class:"form-group" %><br>
-        <%= f.label "商品価格", class:"form-group" %>
+        <%= f.label "商品価格", class:"form-group" %><br>
+        <%= f.label "カテゴリー", class:"form-group" %>
       </div>
       <div class="col-md-9">
         <%= f.attachment_field :image %><br>

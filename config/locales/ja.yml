@@ -1,0 +1,10 @@
+ja:
+  enums:
+    item:
+      order_status:
+        sale: "出品中"
+        purchased: "購入済み"
+    order:
+      payment_method:
+        credit_card: 'クレジットカード'
+        transfer: '銀行振込'

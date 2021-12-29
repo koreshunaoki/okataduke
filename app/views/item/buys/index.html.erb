@@ -13,9 +13,7 @@
   <div class="row">
     <div class="col-md-2">
       <h2>カテゴリー</h2>
-      <%= form_with model: @item, local: :true do |f| %>
-        <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
-      <% end %>
+
     </div>
     <div class="col-md-8 offset-md-1">
       <div class="flex-container">
@@ -23,9 +21,22 @@
           <div class="card flex-item">
             <div>
               <%= attachment_image_tag item, :image, :fill, 200, 200 %>
-              <strong><i class="far fa-flag"></i><span><%= item.name %></span></strong>
-              <span><i class="fas fa-yen-sign"></i></i> <%= item.price%>円 ｜ </span>
+              <% if item == current_customer %>
+                <%= link_to item_sell_path(item), class:"text-dark" do %>
+                  <strong><i class="far fa-flag"></i><span><%= item.name %></span></strong>
+                <% end %>
+              <% else %>
+                <%= link_to item_buy_path(item), class:"text-dark" do %>
+                  <strong><i class="far fa-flag"></i><span><%= item.name %></span></strong>
+                <% end %>
+              <% end %><br>
+              <span><i class="fas fa-yen-sign"></i></i> <%= item.price%>円  </span><br>
               <i class="far fa-thumbs-up"></i>
+              <% if item.order_status == 'sale' %>
+                <%= item.order_status_i18n %>
+              <% else item.order_status == 'purchased' %>
+                <%= item.order_status_i18n %>
+              <% end %>
             </div>
           </div>
         <% end %>
