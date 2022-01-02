@@ -3,7 +3,7 @@
 <div class="col-5 ml-3">
   <h1 class="my-3 ml-3"></h1>
   <table border="3" bordercolor="black" class="table table-sm" >
-    <tr>
+    <tr style="background:#dad7d7;">
       <th>注文日</th>
       <th>配送先</th>
       <th>注文商品</th>
@@ -11,7 +11,7 @@
       <th>注文詳細</th>
     </tr>
     <tr><% @orders.each do |order| %></tr>
-      <th><%= order.created_at %></th>
+      <th><%= order.created_at.strftime("%Y年%m月%d日%H時%M分") %></th>
       <th><%= order.postal_code %><br><%= order.address %><br><%= order.name %></th>
       <th><%= order.item.name %></th>
       <th><%= order.item.price %></th>

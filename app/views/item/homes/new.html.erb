@@ -1,6 +1,21 @@
 <h2>家庭用品登録画面</h2>
+<% if @home.errors.any? %>
+  <ul style="color: red">
+    <%= @home.errors.count %>件のエラーが発生しました
+    <% @home.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container px-5 px-sm-0 card-list-container py-5">
   <%= form_with model: @home, url: item_homes_path, local: :true do |f| %>
+    <!--<div class="form-group">-->
+    <!--  <div class='form-text-wrap'>-->
+    <!--    <label class="form-text">番地</label>-->
+    <!--    <span class="indispensable">必須</span>-->
+    <!--  </div>-->
+    <!--  <%#= f.text_field :name, class:"input-default", placeholder:"例）青山1-1-1"%>-->
+    <!--</div>-->
     <div class="row">
       <div class="col-md-3">
         <%= f.label "家庭用品画像", class:"form-group" %><br>

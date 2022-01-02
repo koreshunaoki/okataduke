@@ -28,6 +28,7 @@ class Item::BuysController < ApplicationController
   def show
     #binding.pry
     @item = Item.find(params[:id])
+    @comment = Comment.new
   end
 
   private

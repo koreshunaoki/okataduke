@@ -7,13 +7,19 @@ Rails.application.routes.draw do
 
 
   namespace :item do
-   resources :buys
+   resources :buys do
+    resource :favorites, only: [:create, :destroy]  
+    resources :comments, only: [:create, :destroy]
+   end
   end
 
   namespace :item do
    #get 'sells/:id/complete',to: 'sells#complete',as: 'sells_complete'
    get "sells/complete"
-   resources :sells
+   resources :sells do
+    resource :favorites, only: [:create, :destroy]  
+    resources :comments, only: [:create, :destroy]
+   end
   end
 
 

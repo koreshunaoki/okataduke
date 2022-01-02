@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_095756) do
+ActiveRecord::Schema.define(version: 2022_01_02_101553) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -31,11 +31,10 @@ ActiveRecord::Schema.define(version: 2021_12_26_095756) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "sell_items"
-    t.integer "buy_items"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -61,10 +60,9 @@ ActiveRecord::Schema.define(version: 2021_12_26_095756) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "sell_items"
-    t.integer "buy_items"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_id"
   end
 
   create_table "images", force: :cascade do |t|

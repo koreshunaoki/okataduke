@@ -10,8 +10,11 @@ class Item::HomesController < ApplicationController
   def create
     @home = ItemHome.new(home_params)
     @home.customer_id = current_customer.id
-    @home.save!
-    redirect_to item_homes_path
+    if @home.save
+      redirect_to item_homes_path
+    else
+      render :new
+    end
   end
 
   def show
