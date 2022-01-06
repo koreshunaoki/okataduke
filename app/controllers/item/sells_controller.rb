@@ -4,7 +4,7 @@ class Item::SellsController < ApplicationController
   end
 
   def new
-    if params[:item][:home_id]
+    if !params[:item][:home_id].blank?
       home_item = ItemHome.find(params[:item][:home_id])
       @item = Item.new(name: home_item.name, introduction: home_item.introduction, category_id: home_item.category_id)
     else
@@ -24,8 +24,11 @@ class Item::SellsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.customer_id = current_customer.id
-    @item.save
-    redirect_to item_buys_path
+    if @item.save
+      redirect_to item_sells_complete_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -44,7 +47,7 @@ class Item::SellsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to item_path(@item)
+      redirect_to item_sell_path(@item)
     else
       render :edit
     end
@@ -53,7 +56,7 @@ class Item::SellsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    #redirect_to item_sells_path
+    redirect_to item_buys_path
   end
 
 

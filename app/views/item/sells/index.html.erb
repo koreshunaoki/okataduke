@@ -1,15 +1,5 @@
 
 <div class="container px-5 px-sm-0 card-list-container py-5">
-  <%# if @sell.errors.any? %>
-  <!--  <div>-->
-      <ul style="color: red">
-        <%#= @sell.errors.count %>errors prohibited this obj from being saved<br>
-          <%# @sell.errors.full_messages.each do |message| %><br>
-          <%#= message %>
-        <%# end %>
-      </ul>
-  <!--  </div>-->
-  <!--<%# end %>-->
   <div class="row">
     <div class="col-md-2">
       <h2>カテゴリー</h2>
@@ -18,18 +8,22 @@
       <% end %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <div class="flex-container">
-        <% @items.each do |item| %>
-          <div class="card flex-item">
-            <div>
-              <%= attachment_image_tag item, :image, :fill, 200, 200 %>
-              <strong><i class="far fa-flag"></i><span><%= item.name %></span></strong>
-              <span><i class="fas fa-yen-sign"></i></i> <%= item.price%>円 ｜ </span>
-              <i class="far fa-thumbs-up"></i>
-            </div>
-          </div>
-        <% end %>
-      </div>
+       <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><% @items.each do |item| %></tr>
+            <th><%= attachment_image_tag item, :image, size: "70x70" %></th>
+            <th><%= item.name %></th>
+            <th><%= link_to 'Show', item_buy_path(item) %></th>
+          <tr><% end %></tr>
+        </tbody>
+      </table>
     </div>
     <%#= paginate sells %>
   </div>

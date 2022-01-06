@@ -1,7 +1,8 @@
 <div class="container takasa">
+  <%= flash[:error] %>
   <h2>ログイン</h2>
 　<h4>会員の方はこちらからログイン</h4>
-  <%= form_for(resource, as: resource_name, url:  customer_session_path(resource_name)) do |f| %>
+  <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
       <%= f.label :email, "メールアドレス" %>　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %>

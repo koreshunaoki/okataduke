@@ -5,11 +5,16 @@
       <%= attachment_image_tag @item, :image, :fill, 400, 400 %>
     </div>
     <div class="col-md-7">
+      <h2>商品名</h2>
       <h2><%= @item.name %></h2><br>
+      <h2>商品説明</h2>
       <h2><%= @item.introduction %></h2><br>
       <h2>いいね</h2>
+      <h2>商品カテゴリー</h2>
       <h2><%= @item.category %></h2><br>
+      <h2>出品額</h2>
       <h2><%= @item.price %></h2>
+      <h3>出品日時</h3>
       <span><i class="fa fa-calendar"></i> <%= @item.created_at.strftime("%Y年%m月%d日%H時%M分") %></span>
       <h2>コメント</h2>
     </div>

@@ -20,7 +20,11 @@
               <td><%= attachment_image_tag home, :image, :fill, 60, 60 %><%= home.name %></td>
               <td><%= home.introduction %></td>
               <td><%= home.place_to_put %></td>
-              <td><%= home.name %><%= link_to "の詳細を確認する", item_home_path(home), class:"btn btn-success btn-lg center-block" %></td>
+              <td>
+                <%= link_to item_home_path(home), class:"btn btn-success center-block" do %>
+                  <span><%= home.name %>の詳細を確認する</span>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     item = Item.find(params[:item_id])
     comment = current_user.comments.new(comment_params)
     comment.item_id = item.id
-    comment.save
+    comment.save!
     redirect_to item_buy_path(@item)
   end
 
@@ -13,10 +13,10 @@ class CommentsController < ApplicationController
     Comment.find_by(id: params[:id]).destroy
     redirect_to item_buy_path(params[:item_id])
   end
-  
+
   private
   def comment_params
     params.require(:comment).permit(:comment)
   end
-  
+
 end

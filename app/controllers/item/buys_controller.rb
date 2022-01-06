@@ -9,19 +9,22 @@ class Item::BuysController < ApplicationController
     @category_parent = Category.where("ancestry is null")
   end
 
-  def category_children
-    @category_children = Category.find("#{params[:parent_id]}").children
-  end
+  # def category_children
+  #   @category_children = Category.find("#{params[:parent_id]}").children
+  # end
 
-  def category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
+  # def category_grandchildren
+  #   @category_grandchildren = Category.find("#{params[:child_id]}").children
+  # end
 
   def create
     @item = Item.new(item_params)
     @item.customer_id = current_customer.id
-    @item.save
-    redirect_to item_buys_path
+    if @item.save
+      redirect_to item_sells_complete_path(@item)
+    else
+      render :new
+    end
   end
 
 
@@ -29,6 +32,7 @@ class Item::BuysController < ApplicationController
     #binding.pry
     @item = Item.find(params[:id])
     @comment = Comment.new
+    @customer = @item.customer
   end
 
   private

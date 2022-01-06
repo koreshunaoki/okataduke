@@ -1,7 +1,8 @@
 <div style="text-align: center">
   <h1>マイページ</h1>
   <h3>登録情報</h3>
-  <%= link_to '登録情報を編集する', edit_customer_path(@customer), class:"btn btn-success btn-lg center-block" %>
+  <%= link_to 'プロフィール
+  を編集する', edit_customer_path(@customer), class:"btn btn-success btn-lg center-block" %>
   <h1 class="my-5 ml-3"></h1>
   <table align="center" style="font-size: 30px;">
     <tr>
@@ -32,7 +33,7 @@
   <table>
     <tr><%= link_to '配送先一覧を見る', addresses_path, class:"btn btn-success btn-lg center-block" %></tr><br>
     <tr></tr><br>
-    <tr><%= link_to '注文履歴一覧を見る', orders_path, class:"btn btn-success btn-lg center-block" %></tr><br>
+    <tr><%= link_to '購入商品履歴一覧を見る', orders_path, class:"btn btn-success btn-lg center-block" %></tr><br>
     <tr></tr><br>
     <tr><%= link_to '出品した商品を確認する', item_sells_path, class:"btn btn-success btn-lg center-block" %></tr>
   </table>

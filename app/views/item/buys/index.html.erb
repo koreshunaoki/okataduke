@@ -15,22 +15,23 @@
       <h2>カテゴリー</h2>
 
     </div>
-   
+
     <div class="col-md-8 offset-md-1">
       <div class="flex-container">
         <% @items.each do |item| %>
           <div class="card flex-item">
             <div>
               <%= attachment_image_tag item, :image, :fill, 200, 200 %>
-              <% if item == current_customer %>
-                <%= link_to item_sell_path(item), class:"text-dark" do %>
-                  <strong><i class="far fa-flag"></i><span><%= item.name %></span></strong>
-                <% end %>
-              <% else %>
+              <%= item.customer.email %><br>
+              <!--<%# if item.customer == current_customer %>-->
+              <!--  <%#= link_to item_sell_path(item), class:"text-dark" do %>-->
+              <!--    <strong><i class="far fa-flag"></i><span><%#= item.name %></span></strong>-->
+              <!--  <%# end %>-->
+              <!--<%# else %>-->
                 <%= link_to item_buy_path(item), class:"text-dark" do %>
                   <strong><i class="far fa-flag"></i><span><%= item.name %></span></strong>
                 <% end %>
-              <% end %><br>
+              <%# end %><br>
               <span><i class="fas fa-yen-sign"></i></i> <%= item.price%>円  </span><br>
               <i class="far fa-thumbs-up"></i>
               <% if item.order_status == 'sale' %>
@@ -38,7 +39,7 @@
               <% else item.order_status == 'purchased' %>
                 <%= item.order_status_i18n %>
               <% end %>
-              <%= link_to "#{item.comments.count} コメント", item_buy_path(item.id) %>
+              
             </div>
           </div>
         <% end %>

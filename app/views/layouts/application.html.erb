@@ -31,7 +31,7 @@
                 <%= link_to 'お片付けページ', item_homes_path, class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to '出品する', new_item_sell_path, class: 'nav-link text-dark' %>
+                <%= link_to '出品する', new_item_sell_path({item: {home_id: nil}}), class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>

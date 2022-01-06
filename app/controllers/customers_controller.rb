@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
