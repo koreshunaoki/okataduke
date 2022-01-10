@@ -5,11 +5,10 @@
     </div>
     <div class="col-md-8">
       <%= link_to '家庭用品を登録する', new_item_home_path, class:"btn btn-success btn-lg center-block" %>
-      <table class="table table-striped">
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th>名前</th>
-            <th>説明</th>
             <th>置き場所</th>
             <th colspan="1"></th>
           </tr>
@@ -18,7 +17,6 @@
           <% @homes.each do |home| %>
             <tr>
               <td><%= attachment_image_tag home, :image, :fill, 60, 60 %><%= home.name %></td>
-              <td><%= home.introduction %></td>
               <td><%= home.place_to_put %></td>
               <td>
                 <%= link_to item_home_path(home), class:"btn btn-success center-block" do %>

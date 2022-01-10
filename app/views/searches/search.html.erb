@@ -1,0 +1,31 @@
+<h2>検索画面</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがCustomerの時 -->
+  <% if @range == "ItemHome" %>
+    <tbody>
+      <% @homes.each do |home| %>
+        <tr>
+          <td>
+            <%= link_to item_home_path(home) do %>
+              <%= home.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがCustmerではない時(= 検索対象モデルがItemの時) -->
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td>
+             <%= link_to item_buy_path(item) do %>
+              <%= item.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

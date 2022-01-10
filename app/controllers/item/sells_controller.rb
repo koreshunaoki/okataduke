@@ -1,6 +1,6 @@
 class Item::SellsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.where(customer_id: current_customer.id)
   end
 
   def new
@@ -25,7 +25,7 @@ class Item::SellsController < ApplicationController
     @item = Item.new(item_params)
     @item.customer_id = current_customer.id
     if @item.save
-      redirect_to item_sells_complete_path
+      redirect_to item_sells_complete_path(@item)
     else
       render :new
     end

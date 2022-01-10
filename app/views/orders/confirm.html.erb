@@ -1,35 +1,35 @@
- <h2>注文情報確認</h2>
+<div style="text-align: center">
+  <h2>注文情報確認</h2>
+ <%= attachment_image_tag @item, :image, :fill, 200, 200 %>
+  <table border="3", bordercolor="white", align="center", style="font-size: 30px;">
+    <tr>
+      <th>商品名</th>
+      <th><%= @item.name %></th>
+    </tr>
+    <tr>
+      <th>購入代金</th>
+      <th><%= @item.price %></th>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <th><%= @order.payment_method_i18n %></th>
+    </tr>
+    <tr>
+      <th>お届け先</th>
+      <th>
+        <%= @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </th>
+    </tr>
+  </table>
 
-
-    <table border="3", bordercolor="black">
-      <tr>
-        <th>商品名</th>
-        <th>単価(税込)</th>
-      </tr>
-      <tr>
-        <th><%= attachment_image_tag @item, :image, :fill, 100, 100, format:'jpg', fallback:"no_image.jpg" %><%= @item.name %></th>
-        <th><%= @item.price %></th>
-      </tr>
-    </table>
-    <table border="3", bordercolor="black">
-      <tr>
-        <th>送料</th>
-        <th><%= shipping_cost = 800 %></th>
-      </tr>
-    </table>
-
-
-    <h4>支払方法</h4>
-    <%= @order.payment_method_i18n %>
-    <h4>お届け先</h4>
-    <%= @order.postal_code %><%= @order.address %><br>
-    <%= @order.name %><br>
   <%= form_with model: @order, url: orders_path, local:true do |f| %>
     <%= f.hidden_field :postal_code %>
     <%= f.hidden_field :address %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :payment_method %>
-    <%= f.hidden_field :total_payment %>
     <%= f.hidden_field :sell_id, :value => @item.id %>
     <%= f.submit "注文を確定する", class: "btn btn-success btn-lg center-block" %>
   <% end %>
+</div>

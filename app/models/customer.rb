@@ -15,4 +15,6 @@ class Customer < ApplicationRecord
     super && (self.is_deleted == false)
   end
   #退会したユーザーをログインできなくする
+
+
 end

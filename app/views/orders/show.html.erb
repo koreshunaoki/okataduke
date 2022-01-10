@@ -1,50 +1,38 @@
-<h2>注文履歴詳細</h2>
 
- <h4>注文情報</h4>
- <table border="3" bordercolor="black">
-    <tr>
-      <th>注文日</th>
-      <th><%= @order.created_at.strftime("%Y年%m月%d日%H時%M分") %></th>
-    </tr>
-    <tr>
-      <th>配送先</th>
-      <th><%= @order.customer.postal_code %><br><%= @order.customer.address %><br><%= @order.name %></th>
-    </tr>
-    <tr>
-      <th>支払方法</th>
-      <th><%= @order.payment_method_i18n %></th>
-    </tr>
-
-  </table>
-　<h4>請求情報</h4>
-  <table border="3" bordercolor="black">
-    <tr>
-      <th>商品合計</th>
-      <th><%= @order.total_payment %></th>
-    </tr>
-    <tr>
-      <th>送料</th>
-      <th><%= shipping_cost = 800 %></th>
-    </tr>
-    <tr>
-      <th>ご請求額</th>
-      <th><%= @order.total_payment %></th>
-    </tr>
-  </table>
-  <h4>注文内容</h4>
-  <table border="3" bordercolor="black">
-    <%# @order.order_details.each do |order_detail| %>
-     <tr>
-      <th>商品</th>
-      <th>単価(税込)</th>
-      <th>個数</th>
-      <th>小計</th>
-    </tr>
-      <!--<tr>-->
-      <!--  <th><%#= order_detail.item.name %></th>-->
-      <!--  <th><%#= order_detail.item.taxin_price.floor %></th>-->
-      <!--  <th><%#= order_detail.amount %></th>-->
-      <!--  <th><%#= order_detail.item.taxin_price.floor * order_detail.amount %></th>-->
-      <!--</tr>-->
-    <%# end %>
-  </table>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-5">
+      <h2>注文履歴詳細</h2>
+      <%= attachment_image_tag @item, :image, :fill, 400, 400 %>
+    </div>
+    <div class="col-md-7">
+      <h1>注文情報</h1>
+      <table border="3" bordercolor="white" style="font-size: 30px;", align="center">
+        <tr>
+          <th>注文日</th>
+          <th><%= @order.created_at.strftime("%Y年%m月%d日%H時%M分") %></th>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <th><%= @order.customer.postal_code %><br><%= @order.customer.address %><br><%= @order.name %></th>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <th><%= @order.payment_method_i18n %></th>
+        </tr>
+        <tr>
+          <th>商品金額</th>
+          <th><%= @order.item.price %></th>
+        </tr>
+        <tr>
+          <th>出品者名</th>
+          <th><%= @order.customer.last_name %><%= @order.customer.first_name %></th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th><%= @order.item.name %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -9,4 +9,19 @@ class ItemHome < ApplicationRecord
     belongs_to :category
     belongs_to :customer
     attachment :image
+    
+    
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @home = ItemHome.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @home = ItemHome.where("name LIKE?", "#{word}")
+    elsif search == "backward_match"
+      @home = ItemHome.where("name LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @home = ItemHome.where("name LIKE?", "#{word}")
+    else
+      @home = ItemHome.all
+    end
+  end
 end
