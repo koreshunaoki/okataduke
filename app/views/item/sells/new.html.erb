@@ -1,5 +1,5 @@
-<h2>出品物登録画面</h2>
-<div class="container px-5 px-sm-0 card-list-container py-5">
+
+<div class="container p-5 px-sm-0 py-5">
   <% if @item.errors.any? %>
   <ul style="color: red">
     <%= @item.errors.count %>件のエラーが発生しました
@@ -9,7 +9,8 @@
   </ul>
   <% end %>
   <%= form_with model: @item, url: item_sells_path, local: :true do |f| %>
-    <div class="row">
+    <h2>出品物登録画面</h2>
+    <div class="row" style="font-size: 20px;">
       <div class="col-md-3">
         <%= f.label "商品画像", class:"form-group" %><br>
         <%= f.label "商品名", class:"form-group" %><br>
@@ -20,13 +21,16 @@
       <div class="col-md-9">
         <%= f.attachment_field :image %><br>
         <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
-        <%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
+        <%= f.text_field :introduction, size: "50", class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
         <%= f.text_field :price, class:"form-group", autofocus: true, autocomplete: "price" %><br>
         <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
       </div>
     </div>
-    <div class="actions">
-      <%= f.submit "登録する", class: "btn btn-success btn-lg center-block" %>
+    <div class="d-grid gap-2 d-md-block">
+      <% if @home_item %>
+        <%= f.hidden_field :item_home_id, :value => @home_item.id %>
+      <% end %>
+      <%= f.submit "出品する", class: "btn btn-success btn-lg center-block" %>
     </div>
   <% end %>
 </div>

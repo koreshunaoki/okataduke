@@ -8,9 +8,18 @@ class ItemHome < ApplicationRecord
     # has_many :images, dependent: :destroy
     belongs_to :category
     belongs_to :customer
+    belongs_to :item
     attachment :image
-    
-    
+
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    end
+  end
+
   def self.looks(search, word)
     if search == "perfect_match"
       @home = ItemHome.where("name LIKE?", "#{word}")

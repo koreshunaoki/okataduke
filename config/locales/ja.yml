@@ -2,16 +2,10 @@ ja:
   enums:
     item:
       order_status:
+        unknown: "未出品"
         sale: "出品中"
         purchased: "購入済み"
     order:
       payment_method:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
-  # activerecord:
-  #   attributes:
-  #     customer:
-  #       email: "メールアドレス"
-  #       password: "パスワード"
-  #       password_confirmation: "確認用パスワード"
-  #       remember_me: "次回から自動的にログイン"

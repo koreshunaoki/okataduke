@@ -2,7 +2,7 @@
   <h2>会員情報編集</h2>
 
   <%= form_with model: @customer, url: customer_path(@customer), local:true do |f| %>
-   <table class="row"border="3", bordercolor="white", align="center", style="font-size: 30px;">
+   <table class="row"border="3", bordercolor="white", align="center", style="font-size: 20px;">
       <tr>
         <td><%= f.label "名前", class:"form-group" %></td>
         <td>
@@ -33,6 +33,9 @@
         <td><%= f.label "電話番号（ハイフンなし）", class:"form-group" %></td>
         <td><%= f.text_field :telephone_number, autofocus: true, autocomplete: "phone_number",class:"form-group" %></td>
       </tr>
+      <tr>
+        <td><%= f.submit "編集内容を保存", class: "btn btn-success btn-lg center-block form-group " %></td>
+        <td><%= link_to '退会する', customers_unsubscribe_path, class:"btn btn-outline-danger btn-lg center-block form-group" %></td>
+      </tr>
     </table>
-    <%= f.submit "編集内容を保存", class: "btn btn-success btn-lg center-block form-group" %>
-  <% end %><%= link_to '退会する', customers_unsubscribe_path, class:"btn btn-success btn-lg center-block form-group" %>
+  <% end %>

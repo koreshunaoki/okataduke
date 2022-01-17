@@ -1,7 +1,18 @@
 <div class="container px-sm-0 card-list-container py-5">
   <div class="row">
     <div class="col-md-3">
-      <h2>カテゴリー</h2>
+      <h2>検索ページ</h2>
+      <%= form_with url: search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word, class:"form-group" %><br>
+        <%= f.select :range, options_for_select(['ItemHome']) %><br>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]) %><br>
+        <%= f.submit "検索", class:"btn btn-warning btn-block px-5" %>
+      <% end %>
+      <h2>ソート検索</h2>
+      <%= form_with url: item_homes_sort_path, method: :get, local:true do |f| %>
+        <%= f.select :keyword, [ ['投稿が新しい順', 'new'], ['投稿が古い順', 'old']] %>
+        <%= f.submit "ソートを変える", class:"btn btn-success center-block" %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <%= link_to '家庭用品を登録する', new_item_home_path, class:"btn btn-success btn-lg center-block" %>

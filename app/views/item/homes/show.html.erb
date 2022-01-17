@@ -1,20 +1,57 @@
-<h2>家庭用品詳細画面</h2>
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <div class="col-md-5 ">
-      <%= attachment_image_tag @home, :image, :fill, 400, 400, class:"form-group" %> 
+
+<div class="container p-5 px-sm-0">
+  <div class="row" >
+    <div class="col-lg-5">
+    <h2>家庭用品詳細画面</h2>
+      <%= attachment_image_tag @home, :image, :fill, 400, 400, class:"form-group" %>
       <%= link_to '編集する', edit_item_home_path(@home), class:"btn btn-success btn-lg center-block form-group" %>
       <%= link_to "削除する", item_home_path(@home), method: :delete, data:{confirm: "削除しますか？"}, class:"btn btn-lg btn-danger destroy_book_id form-group" %>
-    </div>
-    <div class="col-md-7">
-      <h2><%= @home.name %></h2><br>
-      <h2><%= @home.introduction %></h2><br>
-      <h2><%= @home.place_to_put %></h2>
-    </div>
-    <%= form_with model: @item, url: new_item_sell_path, local:true, method: :get do |f| %>
-      <%= f.hidden_field :home_id, value: @home.id %>
+      <%= form_with model: @item, url: new_item_sell_path, local:true, method: :get do |f| %>
+        <%= f.hidden_field "item[home_id]", value: @home.id %>
       <%= f.submit "フリマサイトに出品する", class: "btn btn-success btn-lg center-block" %>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="col-lg-7">
+      <table class="table th-nowrap">
+        <thead>
+          <tr>
+            <th>家庭用品名</th>
+            <td><%= @home.name %></td>
+          </tr>
+          <tr>
+            <th>メモ</th>
+            <td><%= @home.introduction %></td>
+          </tr>
+          <tr>
+            <th>置き場所</th>
+            <td><%= @home.place_to_put %></td>
+          </tr>
+          <tr>
+            <th>商品カテゴリー</th>
+            <td><%= @home.category.name %></td>
+          </tr>
+          <tr>
+            <th>登録日時</th>
+            <td><i class="fa fa-calendar"></i><%= @home.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
+          </tr>
+          <tr>
+            <th>出品情報</th>
+            <td>
+              <%if !@item.blank? %>
+                <% if @item.order_status == 'sale' %>
+                  <%= @item.order_status_i18n %>
+                <% else @item.order_status == 'purchased' %>
+                  <%= @item.order_status_i18n %>
+                <% end %>
+              <% else %>
+                <p>未出品</p>
+              <% end %>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
   </div>
-   
+
 </div>

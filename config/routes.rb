@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
 
   namespace :item do
+   get 'buys/sort'
    resources :buys do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -16,13 +17,12 @@ Rails.application.routes.draw do
   namespace :item do
    get 'sells/:id/complete',to: 'sells#complete',as: 'sells_complete'
    resources :sells do
-   #  resource :favorites, only: [:create, :destroy]
-   #  resources :comments, only: [:create, :destroy]
-    end
+   end
   end
 
 
   namespace :item do
+   get 'homes/sort'
    resources :homes
   end
 
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
 
   get "search" => "searches#search"
+
   root to: 'item/buys#index'
   get 'homes/about'
  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

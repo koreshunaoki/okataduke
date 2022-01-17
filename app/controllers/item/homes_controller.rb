@@ -10,6 +10,7 @@ class Item::HomesController < ApplicationController
   def create
     @home = ItemHome.new(home_params)
     @home.customer_id = current_customer.id
+    @item.order_status = :unknown
     if @home.save
       redirect_to item_homes_path
     else
@@ -17,9 +18,14 @@ class Item::HomesController < ApplicationController
     end
   end
 
+  def sort
+    selection = params[:keyword]
+    @homes = ItemHome.sort(selection)
+  end
+
   def show
     @home = ItemHome.find(params[:id])
-    @item = Item.new
+    @item = Item.find_by(item_home_id: @home.id)
   end
 
   def edit

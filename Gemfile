@@ -75,6 +75,8 @@ gem 'dotenv-rails'
 
 gem 'ancestry'
 
+gem 'ransack'
+
 gem "enum_help"
 
 gem 'rails-i18n'

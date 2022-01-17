@@ -1,6 +1,6 @@
 class Item::BuysController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.where(is_deleted: false)
     #@items = Item.where.not(id: Order.pluck(:item_id))
   end
 
@@ -26,6 +26,11 @@ class Item::BuysController < ApplicationController
       render :new
     end
   end
+  
+  def sort
+    selection = params[:keyword]
+    @items = Item.sort(selection)
+  end
 
 
   def show
@@ -35,9 +40,18 @@ class Item::BuysController < ApplicationController
     @customer = @item.customer
   end
 
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_buy_path(@item)
+    else
+      render :edit
+    end
+  end
+
   private
   def item_params
-    params.require(:item).permit(:name, :image, :introduction, :price, :category_id, :customer_id)
+    params.require(:item).permit(:name, :image, :introduction, :price, :category_id, :customer_id, :keyword)
   end
 
 end

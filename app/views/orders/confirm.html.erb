@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <th>購入代金</th>
-      <th><%= @item.price %></th>
+      <th>￥<%= @item.price %></th>
     </tr>
     <tr>
       <th>支払方法</th>
@@ -17,7 +17,7 @@
     <tr>
       <th>お届け先</th>
       <th>
-        <%= @order.postal_code %><br>
+        〒<%= @order.postal_code %><br>
         <%= @order.address %><br>
         <%= @order.name %>
       </th>
@@ -30,6 +30,6 @@
     <%= f.hidden_field :name %>
     <%= f.hidden_field :payment_method %>
     <%= f.hidden_field :sell_id, :value => @item.id %>
-    <%= f.submit "注文を確定する", class: "btn btn-success btn-lg center-block" %>
+    <%= f.submit "購入する", class: "btn btn-success btn-lg center-block" %>
   <% end %>
 </div>

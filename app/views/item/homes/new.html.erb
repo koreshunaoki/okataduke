@@ -1,4 +1,3 @@
-<h2>家庭用品登録画面</h2>
 <% if @home.errors.any? %>
   <ul style="color: red">
     <%= @home.errors.count %>件のエラーが発生しました
@@ -7,22 +6,16 @@
     <% end %>
   </ul>
 <% end %>
-<div class="container px-5 px-sm-0 card-list-container py-5">
+<div class="container px-5 px-sm-0  py-5" style="font-size: 20px;">
   <%= form_with model: @home, url: item_homes_path, local: :true do |f| %>
-    <!--<div class="form-group">-->
-    <!--  <div class='form-text-wrap'>-->
-    <!--    <label class="form-text">番地</label>-->
-    <!--    <span class="indispensable">必須</span>-->
-    <!--  </div>-->
-    <!--  <%#= f.text_field :name, class:"input-default", placeholder:"例）青山1-1-1"%>-->
-    <!--</div>-->
+    <h2>家庭用品登録画面</h2>
     <div class="row">
       <div class="col-md-3">
         <%= f.label "家庭用品画像", class:"form-group" %><br>
         <%= f.label "家庭用品名", class:"form-group" %><br>
         <%= f.label "家庭用品説明文", class:"form-group" %><br>
         <%= f.label "家庭用品置き場所", class:"form-group" %><br>
-        <%= f.label "家庭用品カテゴリー", class:"form-group" %>
+        <%= f.label "カテゴリー", class:"form-group" %>
       </div>
       <div class="col-md-9">
         <%= f.attachment_field :image %><br>

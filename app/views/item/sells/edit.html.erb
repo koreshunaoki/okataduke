@@ -1,7 +1,8 @@
-<h2>出品物編集画面</h2>
-<div class="container px-5 px-sm-0 card-list-container py-5">
-  <%= form_with model: @item, url: item_sell_path(@item), local: :true do |f| %>
-    <div class="row">
+
+<div class="container px-5 px-sm-0 py-5">
+  <%= form_with model: @item, url: item_buy_path(@item), local: :true do |f| %>
+  <h2>出品物編集画面</h2>
+    <div class="row" style="font-size: 20px;">
       <div class="col-md-3">
         <%= f.label "商品画像", class:"form-group" %><br>
         <%= f.label "商品名", class:"form-group" %><br>
@@ -12,7 +13,7 @@
       <div class="col-md-9">
         <%= f.attachment_field :image %><br>
         <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
-        <%= f.text_field :introduction, class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
+        <%= f.text_field :introduction, size: "50", class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
         <%= f.text_field :price, class:"form-group", autofocus: true, autocomplete: "price" %><br>
         <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
       </div>
