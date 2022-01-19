@@ -26,7 +26,7 @@
         <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
       </div>
     </div>
-    <div class="d-grid gap-2 d-md-block">
+    <div align="center">
       <% if @home_item %>
         <%= f.hidden_field :item_home_id, :value => @home_item.id %>
       <% end %>

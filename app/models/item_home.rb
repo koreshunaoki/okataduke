@@ -8,7 +8,7 @@ class ItemHome < ApplicationRecord
     # has_many :images, dependent: :destroy
     belongs_to :category
     belongs_to :customer
-    belongs_to :item
+    has_one :item
     attachment :image
 
   def self.sort(selection)
@@ -28,6 +28,8 @@ class ItemHome < ApplicationRecord
     elsif search == "backward_match"
       @home = ItemHome.where("name LIKE?", "#{word}")
     elsif search == "partial_match"
+      @home = ItemHome.where("name LIKE?", "#{word}")
+    elsif search == "place_to_put"
       @home = ItemHome.where("name LIKE?", "#{word}")
     else
       @home = ItemHome.all

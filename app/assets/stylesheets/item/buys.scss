@@ -1,3 +1,67 @@
 // Place all the styles related to the item/buys controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-buy-table {
+ width: 100%;
+ border-collapse: separate;
+ border: none;
+ border-spacing: 0px 10px ;
+ table-layout: fixed;
+}
+
+.item-buy-table tr{
+  border-bottom: solid 2px white;
+}
+
+.item-buy-table td{
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+    /*word-break: break-all;*/
+  overflow-wrap : break-word;
+}
+
+.item-buy-table th {
+  position: relative;
+  text-align: left;
+  width: 20%;
+  background-color: #009900;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+
+
+.item-buy-table.th-nowrap th {
+  white-space: nowrap;
+}
+
+
+
+
+// /*（共通）　項目の多いテーブルの幅を調整*/
+// @media (max-width: 767px) {
+// .col6t th,
+// .col6t td{
+// font-size:0.4em;
+// padding: 10px 0px;
+// }
+// .col5t th,
+// .col5t td{
+// font-size:0.5em;
+// padding: 10px 0px;
+// }
+// .col4t th,
+// .col4t td{
+// font-size:0.7em;
+// padding: 10px 5px;
+// }
+// .col3t th,
+// .col3t td{
+// font-size:0.8em;
+// padding: 10px 10px;
+// }
+// }

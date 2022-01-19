@@ -1,0 +1,31 @@
+<div class="container px-5 px-sm-0 card-list-container py-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>検索結果</h2>
+      <div class="flex-container">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>置き場所</th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @homes.each do |home| %>
+              <tr>
+                <td><%= attachment_image_tag home, :image, :fill, 60, 60 %><%= home.name %></td>
+                <td><%= home.place_to_put %></td>
+                <td>
+                  <%= link_to item_home_path(home), class:"btn btn-success center-block" do %>
+                    <span><%= home.name %>の詳細を確認する</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

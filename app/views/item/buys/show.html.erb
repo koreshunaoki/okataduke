@@ -2,18 +2,19 @@
   <div class="row">
     <div class="col-md-5">
       <h2>購入商品詳細画面</h2>
-      <%= link_to '編集する',  edit_item_sell_path(@item), class:"btn btn-success btn-lg center-block" %>
+
       <%= attachment_image_tag @item, :image, :fill, 400, 400, class:"form-group" %>
       <% if @item.order_status == 'purchased' %>
       <% elsif (@customer.id != current_customer.id) && (@item.order_status == 'sale') %>
         <%= link_to '購入手続きへ', new_order_path(sell_id: @item.id), class:"btn btn-success btn-block px-5"%>
       <% end %>
       <% if (@customer.id == current_customer.id) && (@item.order_status == 'sale') %>
+        <%= link_to '編集する',  edit_item_sell_path(@item), class:"btn btn-success btn-lg center-block" %>
         <%= link_to "削除する", item_sell_path(@item), method: :delete, data:{confirm: "削除しますか？"}, class:"btn btn-danger btn-lg center-block" %>
       <% end %>
     </div>
     <div class="col-md-7">
-      <table class="table th-nowrap">
+      <table class="item-buy-table col4t th-nowrap" style="font-size: 20px; width: 100%">
         <thead>
           <tr>
             <th>商品名</th>
@@ -21,21 +22,19 @@
           </tr>
           <tr>
             <th>出品額</th>
-            <td>￥<%= @item.price %></td>
+            <td><%= number_to_currency(@item.price) %></td>
           </tr>
            <tr>
             <th>商品説明</th>
-            <td>
-              <%= @item.introduction %>
-            </td>
+            <td class:"word-wrap: break-word"><%= @item.introduction %></td>
           </tr>
           <tr>
             <th>出品者名</th>
-            <th><%= @item.customer.last_name %><%= @item.customer.first_name %></th>
+            <td><%= @item.customer.last_name %><%= @item.customer.first_name %></td>
           </tr>
           <tr>
             <th>いいね</th>
-            <th>
+            <td>
               <% if @item.favorited_by?(current_customer) %>
                 <div>
                   <%= link_to item_buy_favorites_path(@item), method: :delete do %>
@@ -49,27 +48,27 @@
                   <% end %>
                 </div>
               <% end %>
-            </th>
+            </td>
           </tr>
           <tr>
             <th>出品日時</th>
-            <th><i class="fa fa-calendar"></i> <%= @item.created_at.strftime("%Y年%m月%d日%H時%M分") %></th>
+            <td><%= @item.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
           </tr>
           <tr>
             <th>コメント</th>
-            <th>コメント件数：<%= @item.comments.count %></th>
+            <td>コメント件数：<%= @item.comments.count %></td>
           </tr>
           <% @item.comments.each do |comment| %>
             <tr>
               <th><%= comment.customer.last_name %><%= comment.customer.first_name %></th>
-              <th>
+              <td>
                 <%= comment.comment %><br>
                 <%= comment.created_at.strftime('%Y/%m/%d') %>
                 <% if comment.customer == current_customer %>
                   <%= link_to "削除", item_buy_comment_path(comment.item, comment), method: :delete %>
                 <% end %>
                 <br>
-              </th>
+              </td>
               </tr>
           <% end %>
         </thead>
@@ -77,7 +76,7 @@
       <div>
         <% if @item.order_status == 'sale' %>
           <%= form_with(model:[@item, @comment], url: item_buy_comments_path(@item.id), local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %><br>
+            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"width: 100%;" %><br>
             <%= f.submit "コメントを送信する", class:"btn btn-success  center-block" %>
           <% end %>
         <% else @item.order_status == 'purchased' %>

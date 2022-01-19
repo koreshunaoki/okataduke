@@ -6,13 +6,17 @@
       <%= attachment_image_tag @home, :image, :fill, 400, 400, class:"form-group" %>
       <%= link_to '編集する', edit_item_home_path(@home), class:"btn btn-success btn-lg center-block form-group" %>
       <%= link_to "削除する", item_home_path(@home), method: :delete, data:{confirm: "削除しますか？"}, class:"btn btn-lg btn-danger destroy_book_id form-group" %>
-      <%= form_with model: @item, url: new_item_sell_path, local:true, method: :get do |f| %>
-        <%= f.hidden_field "item[home_id]", value: @home.id %>
-      <%= f.submit "フリマサイトに出品する", class: "btn btn-success btn-lg center-block" %>
+      <% if !@item.blank? && @item.order_status == 'sale' or !@item.blank? && @item.order_status == 'purchased' %>
+          <p class="btn btn-success btn-lg center-block disabled"> フリマサイトに出品する</p>
+      <% else !@item.blank? && !@item.order_status == 'sale' or !@item.blank? && !@item.order_status == 'purchased' %>
+        <%= form_with model: @item, url: new_item_sell_path, local:true, method: :get do |f| %>
+          <%= f.hidden_field "item[home_id]", value: @home.id %>
+          <%= f.submit "フリマサイトに出品する", class: "btn btn-success btn-lg center-block" %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-lg-7">
-      <table class="table th-nowrap">
+      <table class="item-buy-table th-nowrap">
         <thead>
           <tr>
             <th>家庭用品名</th>
@@ -32,7 +36,7 @@
           </tr>
           <tr>
             <th>登録日時</th>
-            <td><i class="fa fa-calendar"></i><%= @home.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
+            <td><%= @home.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
           </tr>
           <tr>
             <th>出品情報</th>
@@ -44,14 +48,12 @@
                   <%= @item.order_status_i18n %>
                 <% end %>
               <% else %>
-                <p>未出品</p>
+                <h8>未出品</h8>
               <% end %>
             </td>
           </tr>
         </thead>
       </table>
     </div>
-
   </div>
-
 </div>

@@ -13,7 +13,7 @@
         </tr>
          <tr>
           <th>商品金額</th>
-          <th>￥<%= @order.item.price %></th>
+          <th><%= number_to_currency(@orderitem.price) %></th>
         </tr>
         <tr>
           <th>出品者名</th>

@@ -18,7 +18,6 @@ class Item::SellsController < ApplicationController
     else
       @item = Item.new
     end
-
     @category_parent = Category.where("ancestry is null")
   end
 

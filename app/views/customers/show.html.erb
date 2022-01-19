@@ -1,40 +1,62 @@
-<div style="text-align: center">
-  <h1>マイページ</h1>
-  <h3>登録情報</h3>
-  <%= link_to 'プロフィール
-  を編集する', edit_customer_path(@customer), class:"btn btn-success btn-lg center-block" %>
-  <h1 class="my-5 ml-3"></h1>
-  <table align="center" style="font-size: 30px;">
-    <tr>
-      <td>氏名</td>
-      <td><%= @customer.last_name %><%= @customer.first_name %></td>
-    </tr>
-    <tr>
-      <td>カナ</td>
-      <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-    </tr>
-    <tr>
-      <td>郵便番号</td>
-      <td><%= @customer.postal_code %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= @customer.address %></td>
-    </tr>
-    <tr>
-      <td>電話番号</td>
-      <td><%= @customer.telephone_number %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
-    </tr>
-  </table>
-  <table>
-    <tr><%= link_to '配送先一覧を見る', addresses_path, class:"btn btn-success btn-lg center-block" %></tr><br>
-    <tr></tr><br>
-    <tr><%= link_to '購入商品履歴一覧を見る', orders_path, class:"btn btn-success btn-lg center-block" %></tr><br>
-    <tr></tr><br>
-    <tr><%= link_to '出品した商品を確認する', item_sells_path, class:"btn btn-success btn-lg center-block" %></tr>
-  </table>
+<div class="container px-5 px-sm-0 py-5">
+  <div row>
+    <div col-12>
+      <table class="customer-table" style="font-size: 20px; width: 100%">
+        <h1>マイページ</h1>
+        <h3>登録情報</h3>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to 'プロフィールを編集する', edit_customer_path(@customer), class:"btn btn-success btn-lg center-block" %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to '配送先一覧を見る', addresses_path, class:"btn btn-success btn-lg center-block" %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <% if @customer.orders.present? %>
+              <%= link_to '購入商品履歴一覧を見る', orders_path, class:"btn btn-success btn-lg center-block" %>
+            <% else %>
+              購入商品はありません
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <% if @customer.items.present? %>
+              <%= link_to '出品した商品を確認する', item_sells_path, class:"btn btn-success btn-lg center-block" %>
+            <% else %>
+              出品商品はありません
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>

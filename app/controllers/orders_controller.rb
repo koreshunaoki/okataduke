@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 #before_action :check_cart,only: [:new]
   def index
-    @orders = Order.all.where(customer_id: current_customer.id)
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def new
@@ -41,7 +41,10 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @item = Item.find(params[:id])
+    if @order.item.nil?
+    else
+      @item = Item.find(params[:id])
+    end
   end
 
   private

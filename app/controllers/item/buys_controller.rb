@@ -26,10 +26,14 @@ class Item::BuysController < ApplicationController
       render :new
     end
   end
-  
+
   def sort
     selection = params[:keyword]
     @items = Item.sort(selection)
+  end
+
+  def search
+    @items = Item.looks(params[:search], params[:word])
   end
 
 

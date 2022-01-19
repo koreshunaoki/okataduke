@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <th>購入代金</th>
-      <th>￥<%= @item.price %></th>
+      <th><%= number_to_currency(@item.price) %></th>
     </tr>
     <tr>
       <th>支払方法</th>

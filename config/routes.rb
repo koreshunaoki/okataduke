@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :item do
    get 'buys/sort'
+   get 'buys/search'
    resources :buys do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
 
   namespace :item do
    get 'homes/sort'
+   get 'homes/search'
    resources :homes
   end
 
@@ -37,8 +39,6 @@ Rails.application.routes.draw do
   get 'customers/unsubscribe'
   resources :customers, only: [:show, :edit, :update]
 
-
-  get "search" => "searches#search"
 
   root to: 'item/buys#index'
   get 'homes/about'

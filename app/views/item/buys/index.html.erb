@@ -2,9 +2,8 @@
   <div class="row">
     <div class="col-md-2">
       <h2>検索ページ</h2>
-      <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= form_with url: item_buys_search_path, local: true, method: :get do |f| %>
         <%= f.text_field :word, class:"form-group" %><br>
-        <%= f.select :range, options_for_select(['Item']), class:"form-group" %><br>
         <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]), class:"form-group" %><br>
         <%= f.select :search, options_for_select([["出品中","sale"], ["売り切れ","purchased"]]) %><br>
         <%= f.submit "検索", class:"btn btn-warning btn-block px-5" %>
@@ -24,7 +23,7 @@
                 <%= attachment_image_tag item, :image, :fill, 200, 200 %>
               <% end %><br>
               <strong><span><%= item.name %></span></strong><br>
-              <span>￥<%= item.price%></span><br>
+              <span><%= number_to_currency(item.price) %></span><br>
               <% if item.order_status == 'sale' %>
                 <%= item.order_status_i18n %>
               <% else item.order_status == 'purchased' %>

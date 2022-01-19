@@ -2,10 +2,9 @@
   <div class="row">
     <div class="col-md-3">
       <h2>検索ページ</h2>
-      <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= form_with url: item_homes_search_path, local: true, method: :get do |f| %>
         <%= f.text_field :word, class:"form-group" %><br>
-        <%= f.select :range, options_for_select(['ItemHome']) %><br>
-        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]) %><br>
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backword_match"], ["部分一致","partial_match"], ["置き場所","place_to_put"]]) %><br>
         <%= f.submit "検索", class:"btn btn-warning btn-block px-5" %>
       <% end %>
       <h2>ソート検索</h2>
@@ -17,8 +16,9 @@
     <div class="col-md-8">
       <%= link_to '家庭用品を登録する', new_item_home_path, class:"btn btn-success btn-lg center-block" %>
       <table class="table table-hover table-inverse">
-        <thead>
+        <thead style="font-size: 20px; width: 100%">
           <tr>
+            <th></th>
             <th>名前</th>
             <th>置き場所</th>
             <th colspan="1"></th>
@@ -27,7 +27,8 @@
         <tbody>
           <% @homes.each do |home| %>
             <tr>
-              <td><%= attachment_image_tag home, :image, :fill, 60, 60 %><%= home.name %></td>
+              <td><%= attachment_image_tag home, :image, :fill, 60, 60 %></td>
+              <td><%= home.name %></td>
               <td><%= home.place_to_put %></td>
               <td>
                 <%= link_to item_home_path(home), class:"btn btn-success center-block" do %>
