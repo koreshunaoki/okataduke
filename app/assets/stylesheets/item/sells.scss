@@ -1,3 +1,32 @@
 // Place all the styles related to the item/sells controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-sell-table {
+ width: 100%;
+ border-collapse: separate;
+ border: none;
+ border-spacing: 0px 10px ;
+ table-layout: fixed;
+}
+
+
+.item-sell-table td{
+  width: 100%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+  overflow-wrap : break-word;
+}
+
+.item-sell-table th {
+  position: relative;
+  text-align: left;
+  width: 20%;
+  background-color: #009900;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+

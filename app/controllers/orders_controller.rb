@@ -41,10 +41,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    if @order.item.nil?
-    else
-      @item = Item.find(params[:id])
-    end
+    #@item = Item.find(params[:id])
   end
 
   private

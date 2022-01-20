@@ -1,6 +1,7 @@
 class Item::BuysController < ApplicationController
   def index
     @items = Item.where(is_deleted: false)
+    @q = Item.ransack(params[:q])
     #@items = Item.where.not(id: Order.pluck(:item_id))
   end
 
@@ -29,11 +30,20 @@ class Item::BuysController < ApplicationController
 
   def sort
     selection = params[:keyword]
-    @items = Item.sort(selection)
+    @items = Item.sort(selection,params[:word],params[:search])
   end
 
   def search
     @items = Item.looks(params[:search], params[:word])
+  end
+
+  def category
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+    #@items = Item.where(category_id:Category.where(id:params[:q][:category_id_eq]).or(Cagtegory.where(ancestry: params[:q][:category_id_eq])).pluck(:id))
+    #@children = Category.where(ancestry: params[:q][:category_id_eq])
+    category_id = params[:q][:category_id_eq]
+    @category = Category.find_by(id: category_id)
   end
 
 
@@ -56,6 +66,11 @@ class Item::BuysController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :price, :category_id, :customer_id, :keyword)
+  end
+
+
+  def search_category_item
+    @q = Item.ransack(params[:q])
   end
 
 end

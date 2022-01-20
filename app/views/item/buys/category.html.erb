@@ -1,0 +1,13 @@
+<h2>カテゴリー <%= @category.name %></h2>
+  <ul>
+    <!--<%#@children.each do |child|%>-->
+    <!--<li>-->
+    <!--  <%#=link_to items_path(category_id:child.id)%>>-->
+    <!--  <li>-->
+    <!--<%#end%>-->
+    <% @items.each do |item| %>
+      <li>
+        <%= item.name %>
+      </li>
+    <% end %>
+  </ul>

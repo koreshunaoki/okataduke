@@ -1,6 +1,7 @@
 class Item::HomesController < ApplicationController
   def index
-    @homes = ItemHome.all
+    @homes = ItemHome.all.where(customer_id: current_customer.id)
+    @q = ItemHome.ransack(params[:q])
   end
 
   def new
@@ -10,8 +11,7 @@ class Item::HomesController < ApplicationController
   def create
     @home = ItemHome.new(home_params)
     @home.customer_id = current_customer.id
-    #@home.item_id = .id
-    @item.order_status = :unknown
+    #@item.order_status = :unknown
     if @home.save
       redirect_to item_homes_path
     else
@@ -31,6 +31,16 @@ class Item::HomesController < ApplicationController
   def show
     @home = ItemHome.find(params[:id])
     @item = Item.find_by(item_home_id: @home.id)
+  end
+
+
+  def category
+    @q = ItemHome.ransack(params[:q])
+    @homes = @q.result
+    #@items = Item.where(category_id:Category.where(id:params[:q][:category_id_eq]).or(Cagtegory.where(ancestry: params[:q][:category_id_eq])).pluck(:id))
+    #@children = Category.where(ancestry: params[:q][:category_id_eq])
+    category_id = params[:q][:category_id_eq]
+    @category = Category.find_by(id: category_id)
   end
 
   def edit
@@ -56,5 +66,9 @@ class Item::HomesController < ApplicationController
   private
   def home_params
     params.require(:item_home).permit(:name, :image, :introduction, :place_to_put, :category_id)
+  end
+
+  def search_category_item
+    @q = ItemHome.ransack(params[:q])
   end
 end

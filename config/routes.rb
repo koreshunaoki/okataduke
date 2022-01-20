@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :item do
    get 'buys/sort'
    get 'buys/search'
+   get 'buys/category'
    resources :buys do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
   namespace :item do
    get 'homes/sort'
    get 'homes/search'
+   get 'homes/category'
    resources :homes
   end
 

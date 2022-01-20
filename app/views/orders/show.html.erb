@@ -2,34 +2,34 @@
   <div class="row">
     <div class="col-md-5">
       <h2>購入履歴詳細</h2>
-      <%= attachment_image_tag @item, :image, :fill, 400, 400 %>
+      <%= attachment_image_tag @order.item, :image, :fill, 400, 400 %>
     </div>
     <div class="col-md-7">
       <h1>購入情報</h1>
-      <table border="3" bordercolor="white" style="font-size: 30px;", align="center">
+      <table class=item-buy-table style="font-size: 20px;">
         <tr>
           <th>商品名</th>
-          <th><%= @order.item.name %></th>
+          <td><%= @order.item.name %></td>
         </tr>
          <tr>
           <th>商品金額</th>
-          <th><%= number_to_currency(@orderitem.price) %></th>
+          <td><%= number_to_currency(@order.item.price) %></td>
         </tr>
         <tr>
           <th>出品者名</th>
-          <th><%= @order.item.customer.last_name %><%= @order.item.customer.first_name %></th>
+          <td><%= @order.item.customer.last_name %><%= @order.item.customer.first_name %></td>
         </tr>
         <tr>
           <th>配送先</th>
-          <th><%= @order.customer.postal_code %><br><%= @order.customer.address %><br><%= @order.name %></th>
+          <td>〒<%= @order.customer.postal_code %><br><%= @order.customer.address %><br><%= @order.name %></td>
         </tr>
         <tr>
           <th>支払方法</th>
-          <th><%= @order.payment_method_i18n %></th>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <th>購入日</th>
-          <th><%= @order.created_at.strftime("%Y年%m月%d日%H時%M分") %></th>
+          <td><%= @order.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
         </tr>
       </table>
     </div>

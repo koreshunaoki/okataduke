@@ -12,6 +12,10 @@
         <%= f.select :keyword, [ ['投稿が新しい順', 'new'], ['投稿が古い順', 'old']] %>
         <%= f.submit "ソートを変える", class:"btn btn-success center-block" %>
       <% end %>
+      <%= search_form_for @q, url: item_homes_category_path do |f| %>
+        <%= f.collection_select :category_id_eq, Category.where(ancestry: nil), :id, :name, include_blank: "カテゴリー検索" %>
+        <%= f.submit '検索' %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <%= link_to '家庭用品を登録する', new_item_home_path, class:"btn btn-success btn-lg center-block" %>
