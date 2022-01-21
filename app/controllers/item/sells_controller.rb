@@ -8,13 +8,11 @@ class Item::SellsController < ApplicationController
     if !params[:item][:home_id].blank?
       @home_item = ItemHome.find(params[:item][:home_id])
       if !@home_item.blank?
-        @item = Item.new(name: @home_item.name, introduction: @home_item.introduction)
+        @item = Item.new(name: @home_item.name, introduction: @home_item.introduction, category_id: @home_item.category_id)
+      else Item.where(item_home_id: params[:item][:home_id]).size > 0
+        @item = Item.where(item_home_id: params[:item][:home_id]).first
+     
       end
-      # if Item.where(item_home_id: params[:item][:home_id]).size > 0
-      #   @item = Item.where(item_home_id: params[:item][:home_id]).first
-      # else
-      #   @item = Item.new
-      # end
     else
       @item = Item.new
     end

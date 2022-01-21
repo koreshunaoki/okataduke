@@ -35,6 +35,7 @@ class Item::BuysController < ApplicationController
   end
 
   def search
+    @q = ItemHome.ransack(params[:q])
     @items = Item.looks(params[:search], params[:word])
   end
 

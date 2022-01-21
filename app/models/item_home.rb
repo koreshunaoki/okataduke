@@ -14,9 +14,9 @@ class ItemHome < ApplicationRecord
   def self.sort(selection,word,search)
     case selection
     when 'new'
-      return all.order(created_at: :DESC)
+      return self.looks(search,word).order(created_at: :DESC)
     when 'old'
-      return all.order(created_at: :ASC)
+      return self.looks(search,word).order(created_at: :ASC)
     end
   end
 

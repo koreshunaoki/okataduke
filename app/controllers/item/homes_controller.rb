@@ -21,12 +21,14 @@ class Item::HomesController < ApplicationController
   end
 
   def sort
+    @q = ItemHome.ransack(params[:q])
     selection = params[:keyword]
     @homes = ItemHome.sort(selection,params[:word],params[:search]).where(customer_id: current_customer.id)
   end
 
   def search
-    @homes = ItemHome.looks(params[:search], params[:word])
+    @q = ItemHome.ransack(params[:q])
+    @homes = ItemHome.looks(params[:search], params[:word]).where(customer_id: current_customer.id)
   end
 
   def show
@@ -37,7 +39,7 @@ class Item::HomesController < ApplicationController
 
   def category
     @q = ItemHome.ransack(params[:q])
-    @homes = @q.result
+    @homes = @q.result.where(customer_id: current_customer.id)
     #@items = Item.where(category_id:Category.where(id:params[:q][:category_id_eq]).or(Cagtegory.where(ancestry: params[:q][:category_id_eq])).pluck(:id))
     #@children = Category.where(ancestry: params[:q][:category_id_eq])
     category_id = params[:q][:category_id_eq]
