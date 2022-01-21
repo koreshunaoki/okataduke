@@ -1,22 +1,35 @@
 <div class="container p-5 px-sm-0 card-list-container py-5">
   <h2>配送先登録/一覧</h2>
+  <% if @address.errors.any? %>
+  <ul style="color: red">
+    <%= @address.errors.count %>件のエラーが発生しました
+    <% @address.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </ul>
+  <% end %>
   <div class="row">
     <div class="col-md-5">
-      <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-      　<div>
-          <%= f.label :postal_code, "郵便番号" %>　　　　　　　　　　<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-        </div><br>
-        <div>
-          <%= f.label :address, "住所" %>　　　　　　　　　　　　<%= f.text_field :address, autofocus: true, autocomplete: "address", include_blank: '都道府県' %>
-        </div><br>
-        <div>
-          <%= f.label :name, "宛名　　　　　　　　　　　　 " %><%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div><br>
-        <%= f.submit "新規登録", class: "btn btn-success btn-lg center-block" %>
+      <%= form_with model: @address, url: addresses_path, method: :post, local:true do |f| %>
+      　<table border="3" bordercolor="white" class="table-sm">
+          <tr>
+            <th><%= f.label :postal_code, "郵便番号" %></th>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address, "住所" %></th>
+            <td><%= f.text_field :address, autofocus: true, autocomplete: "address", include_blank: '都道府県' %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "宛名" %></th>
+            <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+          </tr>
+        </table>
+        <%= f.submit "配送先登録", class: "btn btn-success btn-lg center-block" %>
       <% end %>
     </div>
     <div class="col-md-7">
-      <table border="3" bordercolor="white" class="table-hover table-sm">
+      <table class="item-sell-table">
         <tr>
           <b><th>郵便番号</th></b>
           <b><th>住所</th></b>
@@ -24,13 +37,13 @@
           <th></th>
         </tr>
         <tr><% @addresses.each do |address| %></tr>
-          <th><%= address.postal_code %></th>
-          <th><%= address.address %></th>
-          <th><%= address.name %></th>
-          <th>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          <td>
             <%= link_to "削除する", address_path(address), method: :delete, data:{confirm: "削除しますか？"}, class:"btn  btn-danger destroy_book_id" %>
             <%= link_to "編集する", edit_address_path(address), class:"btn btn-success  center-block" %>
-          </th>
+          </td>
         <tr><% end %></tr>
       </table>
     </div>

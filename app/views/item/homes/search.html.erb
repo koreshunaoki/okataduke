@@ -2,6 +2,11 @@
   <div class="row">
     <div class="col-md-8 offset-md-1">
       <h2>検索結果</h2>
+      <h2>ソート検索</h2>
+      <%= form_with url: item_homes_sort_path, method: :get, local:true do |f| %>
+        <%= f.select :keyword, [ ['投稿が新しい順', 'new'], ['投稿が古い順', 'old']] %>
+        <%= f.submit "ソートを変える", class:"btn btn-success center-block" %>
+      <% end %>
       <div class="flex-container">
         <table class="table table-hover table-inverse">
           <thead>

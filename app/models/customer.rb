@@ -10,11 +10,10 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :email, presence: true
   validates :password, presence: true
-  validates :postal_code, presence: true
+  validates :postal_code, presence: true, length: { is: 7 }
   validates :address, presence: true
   validates :telephone_number, presence: true
-      
-  validates :postal_code, length: { is: 7 }
+
 
   has_many :items, dependent: :destroy
   has_many :orders, dependent: :destroy

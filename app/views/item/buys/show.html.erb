@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-md-5">
       <h2>購入商品詳細画面</h2>
-
       <%= attachment_image_tag @item, :image, :fill, 400, 400, class:"form-group" %>
       <% if @item.order_status == 'purchased' %>
       <% elsif (@customer.id != current_customer.id) && (@item.order_status == 'sale') %>

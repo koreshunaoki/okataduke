@@ -11,7 +11,7 @@ class ItemHome < ApplicationRecord
     has_one :item
     attachment :image
 
-  def self.sort(selection)
+  def self.sort(selection,word,search)
     case selection
     when 'new'
       return all.order(created_at: :DESC)

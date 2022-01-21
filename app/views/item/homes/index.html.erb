@@ -16,6 +16,10 @@
         <%= f.collection_select :category_id_eq, Category.where(ancestry: nil), :id, :name, include_blank: "カテゴリー検索" %>
         <%= f.submit '検索' %>
       <% end %>
+      <%= search_form_for @q, url: item_buys_category_path do |f| %>
+        <%= f.collection_select :category_id_eq, Category.where(ancestry: nil), :id, :name, include_blank: "カテゴリー検索", class:"form-group" %>
+        <%= f.submit 'カテゴリー検索', class:"btn btn-success center-block"%>
+      <% end %>
     </div>
     <div class="col-md-8">
       <%= link_to '家庭用品を登録する', new_item_home_path, class:"btn btn-success btn-lg center-block" %>

@@ -3,51 +3,51 @@
 
   <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <table class="row"border="3", bordercolor="white", align="center", style="font-size: 30px;">
+    <table class="item-sell-table", style="font-size: 15px;">
       <tr>
-        <td><%= f.label "名前", class:"form-group" %></td>
+        <th><%= f.label "名前", class:"form-group" %></th>
         <td>
           <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"form-group", placeholder:"姓）" %>
           <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",class:"form-group", placeholder:"名）" %>
         </td>
       </tr>
       <tr>
-        <td><%= f.label "フリガナ", class:"form-group" %></td>
+        <th><%= f.label "フリガナ", class:"form-group" %></th>
         <td>
           <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana",class:"form-group", placeholder:"セイ）"  %>
           <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class:"form-group", placeholder:"メイ）" %>
         </td>
       </tr>
       <tr>
-        <td><%= f.label "メールアドレス", class:"form-group" %>
-        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-group", placeholder:"例）a@a" %></td>
+        <th><%= f.label "メールアドレス", class:"form-group" %>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-group", placeholder:"例）a@a" %></th>
       </tr>
       <tr>
-        <td><%= f.label "郵便番号（ハイフンなし）", class:"form-group" %></td>
+        <th><%= f.label "郵便番号（ハイフンなし）", class:"form-group" %></th>
         <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-group", placeholder:"例）0001111" %></td>
       </tr>
       <tr>
-        <td><%= f.label "住所", class:"form-group" %></td>
+        <th><%= f.label "住所", class:"form-group" %></th>
         <td><%= f.text_field :address, autofocus: true, autocomplete: "address", :value_method => :name, include_blank: '都道府県',class:"form-group", placeholder:"例）京都市右京区1-1-1" %></td>
       </tr>
       <tr>
-        <td><%= f.label "電話番号（ハイフンなし）", class:"form-group" %></td>
+        <th><%= f.label "電話番号（ハイフンなし）", class:"form-group" %></th>
         <td><%= f.text_field :telephone_number, autofocus: true, autocomplete: "phone_number",class:"form-group", placeholder:"例）00011112222" %></td>
       </tr>
       <tr>
-        <td><%= f.label "パスワード（６文字以上）", class:"form-group" %></td>
+        <th><%= f.label "パスワード（６文字以上）", class:"form-group" %></th>
         <td>
           <% if @minimum_password_length %>
             <%= f.password_field :password, autocomplete: "new-password", class:"form-group" %>
           <% end %>
         </td>
       <tr>
-        <td><%= f.label "パスワード（確認用）", class:"form-group" %></td>
+        <th><%= f.label "パスワード（確認用）", class:"form-group" %></th>
         <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-group" %>
       </tr>
     </table>
-    <div class="actions">
-      <%= f.submit "新規登録", class: "btn btn-success btn-lg center-block" %>
+    <div align="center">
+      <%= f.submit "新規登録", class:"btn btn-success btn-lg center-block" %>
     </div>
   <% end %>
 

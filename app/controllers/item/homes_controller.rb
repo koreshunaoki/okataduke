@@ -6,6 +6,7 @@ class Item::HomesController < ApplicationController
 
   def new
     @home = ItemHome.new
+    @category_parent = Category.where("ancestry is null")
   end
 
   def create
@@ -21,7 +22,7 @@ class Item::HomesController < ApplicationController
 
   def sort
     selection = params[:keyword]
-    @homes = ItemHome.sort(selection)
+    @homes = ItemHome.sort(selection,params[:word],params[:search]).where(customer_id: current_customer.id)
   end
 
   def search

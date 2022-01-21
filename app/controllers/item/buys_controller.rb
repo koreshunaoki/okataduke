@@ -29,6 +29,7 @@ class Item::BuysController < ApplicationController
   end
 
   def sort
+    @q = Item.ransack(params[:q])
     selection = params[:keyword]
     @items = Item.sort(selection,params[:word],params[:search])
   end
