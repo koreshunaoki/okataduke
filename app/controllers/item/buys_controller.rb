@@ -36,7 +36,8 @@ class Item::BuysController < ApplicationController
 
   def search
     @q = ItemHome.ransack(params[:q])
-    @items = Item.looks(params[:search], params[:word])
+    @items = Item.looks(params[:search], params[:word], params[:sale_status])
+    @items = sort_at(@items,params[:keyword])
   end
 
   def category
@@ -73,6 +74,30 @@ class Item::BuysController < ApplicationController
 
   def search_category_item
     @q = Item.ransack(params[:q])
+  end
+
+  def sort_at(items, selection)
+    case selection
+    when 'new'
+      return items.where(is_deleted: false).order(created_at: :DESC)
+    when 'old'
+      return items.where(is_deleted: false).order(created_at: :ASC)
+    when 'likes'
+      # likes > 0
+      array1 = items.where(is_deleted: false).where(id: Favorite.group(:item_id).order(Arel.sql('count(item_id) desc')).pluck(:item_id)).where(is_deleted: false)
+      # likes = 0
+      array2 = items.where(is_deleted: false) - where(id: Favorite.group(:item_id).pluck(:item_id)).where(is_deleted: false)
+      return array1 + array2
+      #return where(id: Favorite.group(:item_id).order(Arel.sql('count(item_id) desc')).pluck(:item_id)).where(is_deleted: false)
+    when 'dislikes'
+      array1 = items.where(is_deleted: false). - where(id: Favorite.group(:item_id).pluck(:item_id)).where(is_deleted: false)
+      array2 = items.where(is_deleted: false).where(id: Favorite.group(:item_id).order(Arel.sql('count(item_id) asc')).pluck(:item_id)).where(is_deleted: false)
+      return array1 + array2
+    when 'high'
+      return items.where(is_deleted: false).order(price: :DESC)
+    when 'low'
+      return items.where(is_deleted: false).order(price: :ASC)
+    end
   end
 
 end

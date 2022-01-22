@@ -9,8 +9,8 @@
       <% if !@item.blank? && @item.order_status == 'sale' or !@item.blank? && @item.order_status == 'purchased' %>
           <p class="btn btn-success btn-lg center-block disabled"> フリマサイトに出品する</p>
       <% else !@item.blank? && !@item.order_status == 'sale' or !@item.blank? && !@item.order_status == 'purchased' %>
-        <%= form_with model: @item, url: new_item_sell_path, local:true, method: :get do |f| %>
-          <%= f.hidden_field "item[home_id]", value: @home.id %>
+        <%= form_with model: @item, url: new_item_sell_path, local: true, method: :get do |f| %>
+          <%= f.hidden_field :home_id, value: @home.id %>
           <%= f.submit "フリマサイトに出品する", class: "btn btn-success btn-lg center-block" %>
         <% end %>
       <% end %>

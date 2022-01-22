@@ -1,5 +1,17 @@
-<h1>ABOUTページ</h1>
-<h4>お片付け機能をプラスしたフリマサイトです</h4>。
-<h4>サイト内でその物の画像、名前、ジャンル、家のどこに置いてあるか、メモ等を登録できるお片付けページを作成します。</h4>
-<h4>家のどこに何が置いてあるかがそれをみれば一目でわかるようになります。</h4>
-<h4>そして、いらなくなったものはそのページから直接フリマサイトに出品できる機能にします。</h4>
+<div class="main-container px-5 px-sm-0 py-5" align="center">
+  <div class="main-row" >
+    <div>
+      <h1>お片付けフリマサイトとは</h1>
+      <h4>お片付け機能をプラスしたフリマサイトです。</h4>
+      <h4>サイト内でその物の画像、名前、カテゴリー、家のどこに置いてあるか、メモ等を登録できるお片付けページを作成します。</h4>
+      <h4>家のどこに何が置いてあるかがそれをみれば一目でわかるようになります。</h4>
+      <h4>そして、いらなくなったものはそのページから直接フリマサイトに出品できます。</h4>
+      <div align="center"  style="width: 300px; background-color: #f0f6da;">
+        <h4>会員登録がお済み出ない方</h4><br>
+        <%= link_to "会員登録はこちらから", new_customer_registration_path, class: "btn btn-success btn-lg center-block"%><br>
+        <h4>既に登録済の方</h4><br>
+        <%= link_to "ログインはこちらから", new_customer_session_path, class: "btn btn-success btn-lg center-block" %><br>
+      </div>
+    </div>
+  </div>
+</div>

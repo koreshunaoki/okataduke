@@ -5,16 +5,17 @@ class Item::SellsController < ApplicationController
 
 
   def new
-    if !params[:item][:home_id].blank?
+    if params[:item] && !params[:item][:home_id].blank?
       @home_item = ItemHome.find(params[:item][:home_id])
       if !@home_item.blank?
         @item = Item.new(name: @home_item.name, introduction: @home_item.introduction, category_id: @home_item.category_id)
-      else Item.where(item_home_id: params[:item][:home_id]).size > 0
+      elsif Item.where(item_home_id: params[:item][:home_id]).size > 0
         @item = Item.where(item_home_id: params[:item][:home_id]).first
-     
       end
     else
-      @item = Item.new
+      item_home = ItemHome.find(params[:home_id])
+      @item = Item.new(name: item_home.name,introduction: item_home.introduction)
+      #@item = Item.new
     end
     @category_parent = Category.where("ancestry is null")
   end

@@ -1,21 +1,30 @@
-<div class="container takasa">
-  <%= flash[:error] %>
+<div class="container">
+  <% if @customer.errors.any? %>
+  <ul style="color: red">
+    <%= @customer.errors.count %>件のエラーが発生しました
+    <% @customer.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </ul>
+  <% end %>
   <h2>ログイン</h2>
 　<h4>会員の方はこちらからログイン</h4>
   <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="field">
-      <%= f.label :email, "メールアドレス" %>　　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div><br>
-    <div class="field">
-      <%= f.label :password_confirmation, "パスワード" %>　　　　　　　<%= f.password_field :password %>
-    </div><br>
-    <div class="actions">
+    <table class="item-sell-table", style="font-size: 20px;">
+      <tr>
+        <th><%= f.label "メールアドレス", class:"form-group" %>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-group", placeholder:"例）a@a" %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :password_confirmation, "パスワード" %></th>
+        <td><%= f.password_field :password %></td>
+      </tr>
+    </table>
+    <div align="center">
       <%= f.submit "ログイン", class: "btn btn-success btn-lg center-block" %>
     </div>
   <% end %>
-
   <h4 style="width: 300px;background-color: #f0f6da; text-align: center;">会員登録がお済み出ない方</h4>
-  <%= link_to "こちら",  new_customer_registration_path %>         <span>から新規登録を行ってください</span>
-
+  <%= link_to "こちら",  new_customer_registration_path %><span>から新規登録を行ってください</span>
 </div>

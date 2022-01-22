@@ -1,3 +1,15 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-container {
+  background-image: image-url('ELL75_yousyohondana20120620.jpg');
+  height: 800px;
+  background-size:cover;
+  table-layout: fixed;
+}
+
+.main-row {
+  width: 100%;
+  background-color: #eee;
+  padding: 10px 10px;
+  }
