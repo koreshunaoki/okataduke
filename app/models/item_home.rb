@@ -24,13 +24,13 @@ class ItemHome < ApplicationRecord
     if search == "perfect_match"
       @home = ItemHome.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @home = ItemHome.where("name LIKE?", "#{word}")
+      @home = ItemHome.where("name LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @home = ItemHome.where("name LIKE?", "#{word}")
+      @home = ItemHome.where("name LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @home = ItemHome.where("name LIKE?", "#{word}")
+      @home = ItemHome.where("name LIKE?", "%#{word}%")
     elsif search == "place_to_put"
-      @home = ItemHome.where("name LIKE?", "#{word}")
+      @home = ItemHome.where("place_to_put LIKE?", "#{word}")
     else
       @home = ItemHome.all
     end

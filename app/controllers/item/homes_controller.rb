@@ -32,7 +32,7 @@ class Item::HomesController < ApplicationController
   end
 
   def show
-    
+
     @home = ItemHome.find(params[:id])
     @item = Item.find_by(item_home_id: @home.id)
   end
