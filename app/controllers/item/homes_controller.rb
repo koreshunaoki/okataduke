@@ -1,4 +1,5 @@
 class Item::HomesController < ApplicationController
+  before_action :correct_user, only: [:show, :destroy, :edit, :update]
   def index
     @homes = ItemHome.all.where(customer_id: current_customer.id)
     @q = ItemHome.ransack(params[:q])
@@ -41,8 +42,6 @@ class Item::HomesController < ApplicationController
   def category
     @q = ItemHome.ransack(params[:q])
     @homes = @q.result.where(customer_id: current_customer.id)
-    #@items = Item.where(category_id:Category.where(id:params[:q][:category_id_eq]).or(Cagtegory.where(ancestry: params[:q][:category_id_eq])).pluck(:id))
-    #@children = Category.where(ancestry: params[:q][:category_id_eq])
     category_id = params[:q][:category_id_eq]
     @category = Category.find_by(id: category_id)
   end
@@ -53,7 +52,6 @@ class Item::HomesController < ApplicationController
 
   def update
     @home = ItemHome.find(params[:id])
-    #@home.item_id = .id
     if @home.update(home_params)
       redirect_to item_home_path(@home)
     else
@@ -74,5 +72,13 @@ class Item::HomesController < ApplicationController
 
   def search_category_item
     @q = ItemHome.ransack(params[:q])
+  end
+
+  def correct_user
+    @home = ItemHome.find(params[:id])
+    @homes = ItemHome.all.where(customer_id: current_customer.id)
+    if !@homes.include?(@home)
+      redirect_to root_path
+    end
   end
 end

@@ -32,6 +32,15 @@
   padding: 10px 0;
 }
 
+.item-buy-table th.buy-customer-color {
+
+    background-color: red;
+}
+
+.item-buy-table th.colored {
+
+    background-color: blue;
+}
 
 .item-buy-table th:after{
   display: block;

@@ -2,7 +2,6 @@ class Item::BuysController < ApplicationController
   def index
     @items = Item.where(is_deleted: false)
     @q = Item.ransack(params[:q])
-    #@items = Item.where.not(id: Order.pluck(:item_id))
   end
 
   def new
@@ -10,13 +9,6 @@ class Item::BuysController < ApplicationController
     @category_parent = Category.where("ancestry is null")
   end
 
-  # def category_children
-  #   @category_children = Category.find("#{params[:parent_id]}").children
-  # end
-
-  # def category_grandchildren
-  #   @category_grandchildren = Category.find("#{params[:child_id]}").children
-  # end
 
   def create
     @item = Item.new(item_params)
@@ -43,15 +35,12 @@ class Item::BuysController < ApplicationController
   def category
     @q = Item.ransack(params[:q])
     @items = @q.result
-    #@items = Item.where(category_id:Category.where(id:params[:q][:category_id_eq]).or(Cagtegory.where(ancestry: params[:q][:category_id_eq])).pluck(:id))
-    #@children = Category.where(ancestry: params[:q][:category_id_eq])
     category_id = params[:q][:category_id_eq]
     @category = Category.find_by(id: category_id)
   end
 
 
   def show
-    #binding.pry
     @item = Item.find(params[:id])
     @comment = Comment.new
     @customer = @item.customer

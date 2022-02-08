@@ -63,7 +63,11 @@
           </tr>
           <% @item.comments.each do |comment| %>
             <tr>
-              <th><%= comment.customer.last_name %><%= comment.customer.first_name %></th>
+              <% if comment.customer.id == @item.customer.id %>
+                <th class="buy-customer-color"><%= comment.customer.last_name %><%= comment.customer.first_name %></th>
+              <% else %>
+                <th class="colored"><%= comment.customer.last_name %><%= comment.customer.first_name %></th>
+              <% end %>
               <td>
                 <%= comment.comment %><br>
                 <%= comment.created_at.strftime('%Y/%m/%d') %>
