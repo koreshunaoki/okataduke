@@ -7,4 +7,4 @@
 #   )
 # end
 
-Refile.secret_key = ENV['REFILE_SECRET_KEY']
+Refile.secret_key = '160689d9c7764783569865c3f0537d46eeeed1e84037c6709e59b882fe5e74c3957fb1afe103d5a030ffa10784934025108c9002f854f043af1d290bcecb7955'

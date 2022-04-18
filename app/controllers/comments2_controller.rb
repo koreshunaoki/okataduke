@@ -4,7 +4,11 @@ class CommentsController < ApplicationController
     item = Item.find(params[:item_id])
     comment = current_user.comments.new(comment_params)
     comment.item_id = item.id
-    comment.save!
+    if comment.present?
+      comment.save
+    else
+      render :show
+    end
     redirect_to item_buy_path(@item)
   end
 
