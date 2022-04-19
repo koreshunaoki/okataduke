@@ -3,11 +3,7 @@ class Item::CommentsController < ApplicationController
     item = Item.find(params[:buy_id])
     comment = current_customer.comments.new(comment_params)
     comment.item_id = item.id
-    if comment.present?
-      comment.save
-    else
-      render :show
-    end
+    comment.save
     redirect_to item_buy_path(item.id)
   end
 
