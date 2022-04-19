@@ -18,7 +18,7 @@
             <% if order.item.nil? %>
             <% else %>
               <td><%= order.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
-              <td><%= order.postal_code %><br><%= order.address %><br><%= order.name %></td>
+              <td>〒<%= order.postal_code %><br><%= order.address %><br><%= order.name %></td>
               <td><%= order.item.name %></td>
               <td><%= number_to_currency(order.item.price) %></td>
               <td><%= link_to "表示する", order_path(order), class:"btn btn-success center-block" %></td>
