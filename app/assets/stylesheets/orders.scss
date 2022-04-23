@@ -1,3 +1,28 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.orders-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table tr{
+  border-bottom: solid 2px white;
+}
+
+
+.orders-table th{
+  background-color: #009900;
+  color: white;
+  text-align: center;
+
+}
+
+
+
+.orders-table td{
+  text-align: center;
+  background-color: #eee;
+}
