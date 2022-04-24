@@ -14,7 +14,6 @@
         </thead>
         <tbody>
           <tr><% @orders.each do |order| %></tr>
-              <%# binding.pry %>
             <% if order.item.nil? %>
             <% else %>
               <td><%= order.created_at.strftime("%Y年%m月%d日%H時%M分") %></td>
