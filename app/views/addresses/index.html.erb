@@ -37,7 +37,7 @@
           <th></th>
         </tr>
         <tr><% @addresses.each do |address| %></tr>
-          <td><%= address.postal_code %></td>
+          <td>〒<%= address.postal_code %></td>
           <td><%= address.address %></td>
           <td><%= address.name %></td>
           <td>
