@@ -1,7 +1,7 @@
-<div class="container px-5 px-sm-0 card-list-container py-5">
+<div class="container px-5 px-sm-0 py-5">
   <%= form_with model: @home, local: :true do |f| %>
     <h2>家庭用品編集画面</h2>
-    <div class="row">
+    <div class="row" style="font-size: 20px;">
       <div class="col-md-3">
         <%= f.label "家庭用品画像", class:"form-group" %><br>
         <%= f.label "家庭用品名", class:"form-group" %><br>
@@ -12,13 +12,13 @@
       <div class="col-md-9">
         <%= f.attachment_field :image %><br>
         <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
-        <%= f.text_field :introduction, size: "100", class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
+        <%= f.text_field :introduction, size: "50", class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
         <%= f.text_field :place_to_put, class:"form-group", autofocus: true, autocomplete: "place_to_put" %><br>
         <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
       </div>
     </div>
     <div align="center">
-      <%= f.submit "編集する", class: "btn btn-success btn-lg center-block" %>
+      <%= f.submit "編集を保存する", class: "btn btn-success btn-lg center-block" %>
     </div>
   <% end %>
 </div>
