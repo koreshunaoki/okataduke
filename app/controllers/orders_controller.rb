@@ -13,7 +13,10 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.item_id = params[:order][:sell_id]
-    @order.save!
+    if @order.save!
+    else
+      render :new
+    end
     @order.item.update_attribute(:order_status, :purchased)
     redirect_to orders_complete_path
   end
