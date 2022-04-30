@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :check_cart, only: [:confirm]
   def index
     @orders = Order.where(customer_id: current_customer.id)
   end
@@ -13,10 +14,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.item_id = params[:order][:sell_id]
-    if @order.save!
-    else
-      render :new
-    end
+    @order.save!
     @order.item.update_attribute(:order_status, :purchased)
     redirect_to orders_complete_path
   end
@@ -53,5 +51,12 @@ class OrdersController < ApplicationController
 
 
 
+  def check_cart
+    @orders = Order.where(payment_method: "クレジットカード")
+    if @orders.payment_method.presence?
+    else
+      redirect_to root_path
+    end
+  end
 
 end
