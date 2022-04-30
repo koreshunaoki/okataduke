@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-#before_action :check_cart,only: [:new]
   def index
     @orders = Order.where(customer_id: current_customer.id)
   end
@@ -49,11 +48,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
   end
 
-  # def check_cart
-  #   cart_items = current_customer.cart_items
-  #   if cart_items.empty?
-  #     redirect_to public_cart_items_path
-  #   end
-  # end
+
+
 
 end
