@@ -1,4 +1,4 @@
-<div class="container takasa">
+<div class="container p-5 px-sm-0 py-5">
   <% if @customer.errors.any? %>
   <ul style="color: red">
     <%= @customer.errors.count %>件のエラーが発生しました
@@ -50,6 +50,8 @@
         <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-group" %>
       </tr>
     </table>
-    <%= f.submit "編集内容を保存", class: "btn btn-success btn-lg center-block form-group " %>
-    <%= link_to '退会する', customers_unsubscribe_path, class:"btn btn-outline-danger btn-lg center-block form-group" %>
+    <div align="center">
+      <%= f.submit "編集内容を保存", class:"btn btn-success btn-lg form-group " %>
+      <%= link_to '退会する', customers_unsubscribe_path, class:"btn btn-outline-danger btn-lg form-group" %>
+    </div>
   <% end %>
