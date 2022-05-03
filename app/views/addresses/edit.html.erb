@@ -1,5 +1,5 @@
 <div class="container p-5 py-5">
-  <h2>配送先登録/一覧</h2>
+  <h2>配送先編集</h2>
   <% if @address.errors.any? %>
   <ul style="color: red">
     <%= @address.errors.count %>件のエラーが発生しました
@@ -10,7 +10,7 @@
   <% end %>
   <%= form_with model: @address, url: address_path(@address), local:true do |f| %>
     <div class="row">
-   　  <div class="col-3">
+   　  <div class="col-3" style="font-size: 20px;">
         <%= f.label "郵便番号", class:"form-group" %><br>
         <%= f.label "住所", class:"form-group" %><br>
         <%= f.label "宛名", class:"form-group" %><br>
@@ -21,6 +21,8 @@
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-group" %><br>
       </div>
     </div>
-    <%= f.submit "編集する", class: "btn btn-success btn-lg center-block" %>
+    <div align="center">
+      <%= f.submit "編集する", class: "btn btn-success btn-lg center-block" %>
+    </div>
   <% end %>
 </div>
