@@ -10,16 +10,23 @@
   <% end %>
   <%= form_with model: @address, url: address_path(@address), local:true do |f| %>
     <div class="row">
-   　  <div class="col-3" style="font-size: 20px;">
-        <%= f.label "郵便番号", class:"form-group" %><br>
-        <%= f.label "住所", class:"form-group" %><br>
-        <%= f.label "宛名", class:"form-group" %><br>
-      </div>
-      <div class="col-5">
-        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-group" %><br>
-        <%= f.text_field :address, size: "50", autofocus: true, autocomplete: "address", include_blank: '都道府県', class:"form-group" %><br>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-group" %><br>
-      </div>
+       <table class="customer-table" style="font-size: 20px;">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-group" %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= f.text_field :address, size: "50", autofocus: true, autocomplete: "address", include_blank: '都道府県', class:"form-group" %></td>
+          </tr>
+           <tr>
+            <th>宛名</th>
+            <td><%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-group" %></td>
+          </tr>
+
+        </thead>
+      </table>
     </div>
     <div align="center">
       <%= f.submit "編集する", class: "btn btn-success btn-lg center-block" %>

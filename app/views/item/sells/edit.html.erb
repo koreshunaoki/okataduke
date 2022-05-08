@@ -2,20 +2,30 @@
   <%= form_with model: @item, url: item_buy_path(@item), local: :true do |f| %>
   <h2>出品物編集</h2>
     <div class="row" style="font-size: 20px;">
-      <div class="col-md-3">
-        <%= f.label "商品画像", class:"form-group" %><br>
-        <%= f.label "商品名", class:"form-group" %><br>
-        <%= f.label "商品説明文", class:"form-group" %><br>
-        <%= f.label "商品価格", class:"form-group" %><br>
-        <%= f.label "カテゴリー", class:"form-group" %>
-      </div>
-      <div class="col-md-9">
-        <%= f.attachment_field :image %><br>
-        <%= f.text_field :name, class:"form-group", autofocus: true, autocomplete: "name" %><br>
-        <%= f.text_field :introduction, size: "50", class:"form-group", autofocus: true, autocomplete: "introduction" %><br>
-        <%= f.text_field :price, class:"form-group", autofocus: true, autocomplete: "price" %><br>
-        <%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %>
-      </div>
+       <table class="customer-table" style="font-size: 20px;">
+        <thead>
+          <tr>
+            <th>商品画像</th>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
+          <tr>
+            <th>商品名</th>
+            <td><%= f.text_field :name, size: "47", class:"form-group", autofocus: true, autocomplete: "name" %></td>
+          </tr>
+           <tr>
+            <th>商品説明文</th>
+            <td><%= f.text_area :introduction, size: "50", class:"form-group", autofocus: true, autocomplete: "introduction" %></td>
+          </tr>
+          <tr>
+            <th>商品価格</th>
+            <td><%= f.text_field :price, size: "47", class:"form-group", autofocus: true, autocomplete: "price" %></td>
+          </tr>
+           <tr>
+            <th>カテゴリー</th>
+            <td><%= f.select :category_id, Category.all.map{ |cate| [cate.name,cate.id]} %></td>
+          </tr>
+        </thead>
+      </table>
     </div>
     <div align="center">
       <%= f.submit "編集を保存する", class: "btn btn-success btn-lg center-block" %>
