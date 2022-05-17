@@ -7,7 +7,6 @@
       <% end %>
     </ul>
   <% end %>
-
   <div class="row">
     <h2>注文情報入力</h2>
     <%= form_with model: @order, url: orders_confirm_path(sell_id: @item_id), local:true do |f| %>
@@ -33,6 +32,7 @@
           </thead>
         </table>
       </div>
+      <pre></pre>
       <div>
         <table class="orders-table" border="3" bordercolor="black" style="font-size: 20px;", align="center">
           <thead>
@@ -67,6 +67,7 @@
           </thead>
         </table>
         <div class="col-3"></div>
+        <pre></pre>
         <div align="center">
           <%= f.submit "確認画面へ進む", class: "btn btn-success btn-lg" %>
         </div>
