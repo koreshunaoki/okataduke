@@ -58,9 +58,9 @@
               <td>
                 <%= f.radio_button :address_option, "new_address" %>
                 <%= f.label :address, "新しいお届け先" %><br>
-                郵便番号<%= f.text_field :new_postal_code, autofocus: true, autocomplete: "postal_code" %><br>
-                住所　　<%= f.text_field :new_address, autofocus: true, autocomplete: "address", include_blank: '都道府県' %><br>
-                宛名　　<%= f.text_field :new_name, autofocus: true, autocomplete: "name" %>
+                郵便番号<%= f.text_field :new_postal_code, size: "50", autofocus: true, autocomplete: "postal_code" %><br>
+                住所　　<%= f.text_field :new_address, size: "50", autofocus: true, autocomplete: "address", include_blank: '都道府県' %><br>
+                宛名　　<%= f.text_field :new_name, size: "50", autofocus: true, autocomplete: "name" %>
               </td>
             </tr>
           </thead>
