@@ -1,4 +1,4 @@
-<div class="container p-5 px-sm-0 card-list-container py-5">
+<div class="container p-5 px-sm-0">
   <h2>配送先登録/一覧</h2>
   <% if @address.errors.any? %>
   <ul style="color: red">
@@ -9,7 +9,7 @@
   </ul>
   <% end %>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-4">
       <%= form_with model: @address, url: addresses_path, method: :post, local:true do |f| %>
       　<table border="3" bordercolor="white" class="table-sm">
           <tr>
@@ -28,7 +28,7 @@
         <%= f.submit "配送先登録", class: "btn btn-success btn-lg center-block" %>
       <% end %>
     </div>
-    <div class="col-md-7">
+    <div class="col-8">
       <table class="item-sell-table">
         <tr>
           <b><th>郵便番号</th></b>
