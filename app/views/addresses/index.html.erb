@@ -3,7 +3,7 @@
   <% if @address.errors.any? %>
   <ul style="color: red">
     <%= @address.errors.count %>件のエラーが発生しました
-    <% @address.errors.full_messages.each do |message| %>
+    <% @address.errors.full_messages.each do 
       <%= message %>
     <% end %>
   </ul>
