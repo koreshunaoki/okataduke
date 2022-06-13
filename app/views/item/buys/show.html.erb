@@ -10,7 +10,7 @@
         <% end %>
         <% if (@customer.id == current_customer.id) && (@item.order_status == 'sale') %>
           <%= link_to '編集する',  edit_item_sell_path(@item), class:"btn btn-success btn-lg center-block" %>
-          <%= link_to "出める", item_sell_path(@item), method: :delete, data:{confirm: "出品を取りやめますか？"}, class:"btn btn-danger btn-lg center-block" %>
+          <%= link_to "出品を取りやめる", item_sell_path(@item), method: :delete, data:{confirm: "出品を取りやめますか？"}, class:"btn btn-danger btn-lg center-block" %>
         <% end %>
       </div>
     </div>
