@@ -2,7 +2,7 @@
 <div class="container p-5 px-sm-0">
   <div class="row" >
     <div class="col-lg-5">
-    <h2>家庭用品詳細</h2>
+    <h2>家詳細</h2>
       <%= attachment_image_tag @home, :image, :fill, 400, 400, class:"form-group" %>
       <%= link_to '編集する', edit_item_home_path(@home), class:"btn btn-success btn-lg center-block form-group" %>
       <%= link_to "削除する", item_home_path(@home), method: :delete, data:{confirm: "削除しますか？"}, class:"btn btn-lg btn-danger destroy_book_id form-group" %>
