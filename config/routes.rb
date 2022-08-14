@@ -1,4 +1,10 @@
-Rails.application.routes.draw dos
+Rails.application.routes.draw do
+
+  devise_for :customers, :controllers => {
+    :registrations => 'customers/registrations',
+    :sessions => 'customers/sessions'
+  }
+
 
   namespace :item do
    get 'buys/sort'
