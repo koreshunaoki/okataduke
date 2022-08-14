@@ -2,7 +2,7 @@ class Item::CommentsController < ApplicationController
   def create
     item = Item.find(params[:buy_id])
     comment = current_customer.comments.new(comment_params)
-    comment.item_
+    comment.item_id = item.id
     comment.save
     redirect_to item_buy_path(item.id)
   end
