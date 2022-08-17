@@ -7,7 +7,7 @@ class Item::HomesController < ApplicationController
 
   def new
     @home = ItemHome.new
-    @category_parent = Category.where("ancestry is null")
+    @category_parent = Category.w
   end
 
   def create
