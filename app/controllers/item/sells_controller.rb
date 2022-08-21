@@ -1,6 +1,6 @@
 class Item::SellsController < ApplicationController
   def index
-    @items = Item.all.where(customer_
+    @items = Item.all.where(customer_id: current_customer.id, is_deleted: false)
   end
 
 
