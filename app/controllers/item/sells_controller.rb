@@ -9,8 +9,7 @@ class Item::SellsController < ApplicationController
       @home_item = ItemHome.find(home_item_id)
       @item = Item.new(name: @home_item.name, introduction: @home_item.introduction, category_id: @home_item.category_id)
       if Item.where(item_home_id: home_item_id).size > 0
-        @item = Item.where(item_home_id: home_item_id).first
-      end
+        @item = Item.where(item_home_id: home_ite
     else
       @item = Item.new
     end
