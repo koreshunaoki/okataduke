@@ -2,7 +2,7 @@ class Item::FavoritesController < ApplicationController
   def create
     item = Item.find(params[:buy_id])
     favorite = current_customer.favorites.new(item_id: item.id)
-    fav
+    favorite.save
     redirect_to item_buy_path(item.id)
   end
 
