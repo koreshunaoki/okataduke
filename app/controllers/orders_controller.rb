@@ -18,7 +18,10 @@ class OrdersController < ApplicationController
       redirect_to orders_complete_path
       @order.item.update_attribute(:order_status, :purchased)
     else
-      redirect_to new_o
+      redirect_to new_order_path
+    end
+  end
+
 
   def confirm
     @order = Order.new(order_params)
