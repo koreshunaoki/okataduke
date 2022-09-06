@@ -6,8 +6,7 @@
         <%= attachment_image_tag @item, :image, :fill, 400, 400, class:"form-group" %>
         <% if @item.order_status == 'purchased' %>
         <% elsif (@customer.id != current_customer.id) && (@item.order_status == 'sale') %>
-          <%= link_to '購入手続きへ', new_order_path(sell_id: @item.id), class:"btn btn-success btn-block px-5"%>
-        <% end %>
+          <%= link_to '購入手続きへ', new_order_path(sell_id: @item.id), class:"btn btn-success btn-block
         <% if (@customer.id == current_customer.id) && (@item.order_status == 'sale') %>
           <%= link_to '編集する',  edit_item_sell_path(@item), class:"btn btn-success btn-lg center-block" %>
           <%= link_to "出品を取りやめる", item_sell_path(@item), method: :delete, data:{confirm: "出品を取りやめますか？"}, class:"btn btn-danger btn-lg center-block" %>
