@@ -7,7 +7,7 @@ class ItemHome < ApplicationRecord
     validates :category_id, presence: true
     belongs_to :category
     belongs_to :customer
-    has_one :item
+    
     attachment :image
 
   def self.sort(selection,word,search)
