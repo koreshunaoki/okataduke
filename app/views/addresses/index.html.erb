@@ -2,7 +2,8 @@
   <h2>配送先登録/一覧</h2>
   <% if @address.errors.any? %>
   <ul style="color: red">
-    <%= @address.
+    <%= @address.errors.count %>件のエラーが発生しました!
+    <% @address.errors.full_
     <% end %>
   </ul>
   <% end %>
