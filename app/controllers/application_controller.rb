@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_in_path_for(resource)
-    item_buys_path
+  def after_sign_i
   end
 
   def configure_permitted_parameters
